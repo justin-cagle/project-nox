@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f7459ad8-35ad-4a9d-8656-d19fbc70e833" name="Changes" comment="Initial backend project structure with FastAPI, SQLAlchemy, Alembic, and user creation endpoint">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/alembic/env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/api/v1/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/api/v1/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/core/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/core/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/services/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/services/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pre-commit-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.pre-commit-config.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +117,7 @@
       <updated>1747882703678</updated>
       <workItem from="1747882706592" duration="6496000" />
       <workItem from="1747896275449" duration="3510000" />
-      <workItem from="1747900563916" duration="4187000" />
+      <workItem from="1747900563916" duration="4512000" />
     </task>
     <task id="LOCAL-00001" summary="Repo creation">
       <option name="closed" value="true" />
