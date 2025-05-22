@@ -2,13 +2,13 @@ import os
 import sys
 from logging.config import fileConfig
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-
+import app.models  # noqa: F401
 from alembic import context
 from app.core.db import Base
-from app.models import user  # Import your models here
 from sqlalchemy import engine_from_config, pool
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
