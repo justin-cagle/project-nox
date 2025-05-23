@@ -14,8 +14,10 @@ async def get_db():
 
 @router.post("/users")
 async def register_user(user_in: UserCreate, db: AsyncSession = Depends(get_db)):
-    try:
-        user = await create_user(user_in, db)
-        return {"id": user.id, "username": user.username, "email": user.email}
-    except Exception:
-        raise HTTPException(status_code=400, detail="User creation failed.")
+    user = await create_user(user_in, db)
+    return {
+        "id": user.id,
+        "username": user.username,
+        "email": user.email,
+    }
+
