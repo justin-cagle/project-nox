@@ -63,6 +63,7 @@ docker-compose.override.yml
 ../.idea/
 .vscode/
 *.iml
+.idea/workspace.xml
 
 # ==========================
 # OS Artifacts
