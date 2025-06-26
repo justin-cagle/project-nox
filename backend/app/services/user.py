@@ -1,8 +1,9 @@
-from app.models.user import User
-from app.schemas.user import UserCreate
 from fastapi import HTTPException
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.models.user import User
+from app.schemas.user import UserCreate
 
 
 async def create_user(user_in: UserCreate, db: AsyncSession) -> User:

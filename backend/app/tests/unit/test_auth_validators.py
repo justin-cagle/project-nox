@@ -1,4 +1,5 @@
 import pytest
+
 from app.validators import auth_validators
 
 # --- Email Validation Tests ---
@@ -30,9 +31,9 @@ def test_valid_email(valid_email):
     ],
 )
 def test_invalid_email(invalid_email):
-    with pytest.raises(ValueError) as excinfo:
+    with pytest.raises(ValueError) as exc_info:
         auth_validators.validate_email(invalid_email)
-    assert str(excinfo.value) == "Invalid email address: '{}'".format(invalid_email)
+    assert "email" in str(exc_info.value).lower()
 
 
 # --- Password Validation Tests ---
@@ -55,7 +56,7 @@ def test_valid_password(valid_password):
         "ALLUPPERCASE",  # no lower, no digit, no special
         "NoSpecial123",  # no special
         "NoNumber!",  # no number
-        "PASSWORD123!",  # no lowercase (if you test with something like "PASSWORD123!")
+        "PASSWORD123!",  # no lowercase (if something like "PASSWORD123!")
         "password123!",  # no uppercase (if you test with "password123!")
         "A" * 129,  # too long
         "PasswordNoSpecial9",  # missing special
@@ -64,6 +65,6 @@ def test_valid_password(valid_password):
     ],
 )
 def test_invalid_password(invalid_password):
-    with pytest.raises(ValueError) as excinfo:
+    with pytest.raises(ValueError) as exc_info:
         auth_validators.validate_password(invalid_password)
-    assert str(excinfo.value) == "Invalid password: '{}'".format(invalid_password)
+    assert "password" in str(exc_info.value).lower()

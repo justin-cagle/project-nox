@@ -2,10 +2,11 @@ import os
 import sys
 from logging.config import fileConfig
 
+from sqlalchemy import engine_from_config, pool
+
 import app.models  # noqa: F401
 from alembic import context
 from app.core.db import Base
-from sqlalchemy import engine_from_config, pool
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
