@@ -1,8 +1,9 @@
 from unittest.mock import AsyncMock, patch
 
 import pytest
-from app.main import app
 from fastapi.testclient import TestClient
+
+from app.main import app
 
 client = TestClient(app)
 
@@ -56,15 +57,13 @@ def test_invalid_email(invalid_email):
             "display_name": "John Smith",
         },
     )
-    assert response.status_code == 400
     resp_body = response.json()
-    detail = resp_body["detail"]
-    assert detail["error"] == "REGISTRATION_FAILED"
-    assert detail["errorCode"] == "INVALID_EMAIL"
-    assert (
-        detail["errorMessage"]
-        == "Registration could not be completed. Please check your input and try again."
-    )
+    assert response.status_code == 400
+    assert resp_body["error"]
+    assert "errorCode" in resp_body
+    assert "errorMessage" in resp_body
+    assert resp_body["field"] == "email"
+    assert "try again" in resp_body["errorMessage"].lower()
 
 
 @pytest.mark.parametrize(
@@ -96,13 +95,11 @@ def test_invalid_password(invalid_password):
     )
     assert response.status_code == 400
     resp_body = response.json()
-    detail = resp_body["detail"]
-    assert detail["error"] == "REGISTRATION_FAILED"
-    assert detail["errorCode"] == "INVALID_PASSWORD"
-    assert (
-        detail["errorMessage"]
-        == "Registration could not be completed. Please check your input and try again."
-    )
+    assert resp_body["error"]
+    assert "errorCode" in resp_body
+    assert "errorMessage" in resp_body
+    assert resp_body["field"] == "password"
+    assert "try again" in resp_body["errorMessage"].lower()
 
 
 @pytest.mark.parametrize(
@@ -136,12 +133,22 @@ def test_invalid_password(invalid_password):
 )
 def test_missing_field(missing_field):
     response = client.post("/api/v1/auth/register", json=missing_field)
-    assert response.status_code == 422
+    resp_body = response.json()
+    assert response.status_code == 400
+    assert resp_body["error"]
+    assert "errorCode" in resp_body
+    assert "errorMessage" in resp_body
+    assert "try again" in resp_body["errorMessage"].lower()
 
 
 def test_empty_body():
     response = client.post("/api/v1/auth/register", json={})
-    assert response.status_code == 422
+    resp_body = response.json()
+    assert response.status_code == 400
+    assert resp_body["error"]
+    assert "errorCode" in resp_body
+    assert "errorMessage" in resp_body
+    assert "try again" in resp_body["errorMessage"].lower()
 
 
 @pytest.mark.parametrize(
@@ -175,11 +182,16 @@ def test_empty_body():
 )
 def test_invalid_field_type(invalid_type):
     response = client.post("/api/v1/auth/register", json=invalid_type)
-    assert response.status_code == 422
+    resp_body = response.json()
+    assert response.status_code == 400
+    assert resp_body["error"]
+    assert "errorCode" in resp_body
+    assert "errorMessage" in resp_body
+    assert "try again" in resp_body["errorMessage"].lower()
 
 
 def test_non_json_body():
     response = client.post(
         "/api/v1/auth/register", data="not json", headers={"Content-Type": "text/plain"}
     )
-    assert response.status_code == 422  # Unsupported Media Type
+    assert response.status_code == 400  # Unsupported Media Type

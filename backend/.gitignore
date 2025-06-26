@@ -16,6 +16,7 @@ __pycache__/
 .cache/
 *.bak
 *.swp
+*.db
 
 # ==========================
 # Python (Backend)
@@ -64,6 +65,7 @@ docker-compose.override.yml
 .vscode/
 *.iml
 .idea/workspace.xml
+.idea/
 
 # ==========================
 # OS Artifacts
