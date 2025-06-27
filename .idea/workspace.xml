@@ -5,24 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24c5a663-50fd-4df7-a24d-409d903c1e53" name="Changes" comment="Fixed test_api_auth_register. Tests pass. Committing green code.">
-      <change afterPath="$PROJECT_DIR$/.flake8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/core/security.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/exceptions/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/exceptions/handlers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/tests/integration/dev.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/tests/integration/test.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/alembic/env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/alembic/versions/815dd23ede05_create_user_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/alembic/versions/815dd23ede05_create_user_table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/api/v1/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/api/v1/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/tests/unit/test_core_security.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/core/security.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/core/security.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/schemas/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/schemas/user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/services/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/services/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/tests/integration/test_api_auth_register.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/tests/integration/test_api_auth_register.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/tests/unit/test_api_auth_register.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/tests/unit/test_api_auth_register.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/tests/integration/test.db" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/tests/integration/test.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/tests/unit/test_auth_validators.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/tests/unit/test_auth_validators.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,6 +75,12 @@
     "Python tests.Python tests for test_auth_validators.test_invalid_password.executor": "Run",
     "Python tests.Python tests for test_auth_validators.test_valid_email.executor": "Run",
     "Python tests.Python tests for test_auth_validators.test_valid_password.executor": "Run",
+    "Python tests.Python tests for test_core_security.test_check_password_invalid.executor": "Run",
+    "Python tests.Python tests for test_core_security.test_check_password_invalid_hash_format.executor": "Run",
+    "Python tests.Python tests for test_core_security.test_check_password_valid.executor": "Run",
+    "Python tests.Python tests for test_core_security.test_needs_rehash_false_on_fresh_hash.executor": "Run",
+    "Python tests.Python tests for test_core_security.test_needs_rehash_true_on_weak_hash.executor": "Run",
+    "Python tests.Python tests for test_core_security.test_verification.executor": "Run",
     "Python tests.Python tests in test_api_auth_register.py.executor": "Run",
     "Python tests.Python tests in test_auth_validators.py.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -102,8 +96,8 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python tests.Python tests for test_api_auth_register.test_register_duplicate_user">
-    <configuration name="Python tests for test_api_auth_register.test_non_json_body" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Python tests for test_core_security.test_needs_rehash_true_on_weak_hash">
+    <configuration name="Python tests for test_core_security.test_check_password_invalid" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="project-nox" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -115,27 +109,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_api_auth_register.test_non_json_body&quot;" />
+      <option name="_new_target" value="&quot;test_core_security.test_check_password_invalid&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_api_auth_register.test_register_duplicate_user" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="project-nox" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend/app/tests/integration" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_api_auth_register.test_register_duplicate_user&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_auth_validators.test_invalid_email" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_core_security.test_check_password_invalid_hash_format" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="project-nox" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -147,11 +125,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_auth_validators.test_invalid_email&quot;" />
+      <option name="_new_target" value="&quot;test_core_security.test_check_password_invalid_hash_format&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_auth_validators.test_invalid_password" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_core_security.test_check_password_valid" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="project-nox" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -163,11 +141,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_auth_validators.test_invalid_password&quot;" />
+      <option name="_new_target" value="&quot;test_core_security.test_check_password_valid&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_auth_validators.test_valid_password" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_core_security.test_needs_rehash_false_on_fresh_hash" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="project-nox" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -179,17 +157,33 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_auth_validators.test_valid_password&quot;" />
+      <option name="_new_target" value="&quot;test_core_security.test_needs_rehash_false_on_fresh_hash&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_core_security.test_needs_rehash_true_on_weak_hash" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="project-nox" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend/app/tests/unit" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_core_security.test_needs_rehash_true_on_weak_hash&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_api_auth_register.test_register_duplicate_user" />
-        <item itemvalue="Python tests.Python tests for test_auth_validators.test_invalid_password" />
-        <item itemvalue="Python tests.Python tests for test_auth_validators.test_valid_password" />
-        <item itemvalue="Python tests.Python tests for test_auth_validators.test_invalid_email" />
-        <item itemvalue="Python tests.Python tests for test_api_auth_register.test_non_json_body" />
+        <item itemvalue="Python tests.Python tests for test_core_security.test_needs_rehash_true_on_weak_hash" />
+        <item itemvalue="Python tests.Python tests for test_core_security.test_needs_rehash_false_on_fresh_hash" />
+        <item itemvalue="Python tests.Python tests for test_core_security.test_check_password_invalid_hash_format" />
+        <item itemvalue="Python tests.Python tests for test_core_security.test_check_password_invalid" />
+        <item itemvalue="Python tests.Python tests for test_core_security.test_check_password_valid" />
       </list>
     </recent_temporary>
   </component>
@@ -210,7 +204,7 @@
       <updated>1748948582161</updated>
       <workItem from="1748948584325" duration="243000" />
       <workItem from="1748948840843" duration="17178000" />
-      <workItem from="1750146041825" duration="46915000" />
+      <workItem from="1750146041825" duration="58550000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed test_api_auth_register. Tests pass. Committing green code.">
       <option name="closed" value="true" />
@@ -233,7 +227,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="Fixed test_api_auth_register. Tests pass. Committing green code." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/project_nox$.coverage" NAME=" Coverage Results" MODIFIED="1750914821223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app/tests/integration" />
+    <SUITE FILE_PATH="coverage/project_nox$.coverage" NAME=" Coverage Results" MODIFIED="1750992261844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app/tests/unit" />
     <SUITE FILE_PATH="coverage/project_nox$main.coverage" NAME="main Coverage Results" MODIFIED="1747894438005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app" />
     <SUITE FILE_PATH="coverage/project_nox$815dd23ede05_create_user_table.coverage" NAME="815dd23ede05_create_user_table Coverage Results" MODIFIED="1747904040323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/alembic/versions" />
     <SUITE FILE_PATH="coverage/project_nox$auth_validators.coverage" NAME="auth_validators Coverage Results" MODIFIED="1748809544599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app/validators" />

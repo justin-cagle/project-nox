@@ -2,12 +2,18 @@ from fastapi import HTTPException
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core.security import hash_password
 from app.models.user import User
 from app.schemas.user import UserCreate
 
 
 async def create_user(user_in: UserCreate, db: AsyncSession) -> User:
-    user = User(username=user_in.user_name, email=user_in.email)
+    user = User(
+        username=user_in.user_name,
+        email=user_in.email,
+        display_name=user_in.display_name,
+        hashed_password=hash_password(user_in.password),
+    )
     db.add(user)
     try:
         await db.commit()
