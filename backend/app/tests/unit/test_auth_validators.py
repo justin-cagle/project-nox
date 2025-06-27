@@ -12,6 +12,9 @@ from app.validators import auth_validators
         "user.name+test@example.co.uk",
         "user_name@example.io",
         "user-name@subdomain.example.com",
+        "customer/department=shipping@example.com",
+        "$A12345@example.com",
+        "!def!xyz%abc@example.com",
     ],
 )
 def test_valid_email(valid_email):
@@ -21,13 +24,20 @@ def test_valid_email(valid_email):
 @pytest.mark.parametrize(
     "invalid_email",
     [
-        "",
-        "userexample.com",
-        "user@.com",
-        "user@com",
-        "user@com.",
-        "user@com..com",
-        "a" * 255 + "@example.com",  # too long
+        "",  # Empty string
+        "plainaddress",  # No @
+        "@no-local-part.com",  # Missing local part
+        "Outlook Contact <outlook-contact@domain.com>",  # Name in address
+        "no-at.domain.com",  # Missing @ symbol
+        "no-tld@domain",  # Missing top-level domain
+        "lots-of-dots@domain..com",  # Double dot
+        "trailing-dot@domain.com.",  # Trailing dot
+        ".leading-dot@domain.com",  # Leading dot in local part
+        "spaces in@email.com",  # Space in address
+        "user@.invalid.com",  # Domain starts with dot
+        "user@[192.168.1.256]",  # Invalid IPv4 literal
+        "user@localhost",  # Localhost often rejected in production
+        "a" * 255 + "@example.com",  # Exceeds max length
     ],
 )
 def test_invalid_email(invalid_email):
