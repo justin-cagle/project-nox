@@ -1,5 +1,5 @@
 from fastapi import HTTPException
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.security import hash_password
@@ -20,5 +20,8 @@ async def create_user(user_in: UserCreate, db: AsyncSession) -> User:
     except IntegrityError:
         await db.rollback()
         raise HTTPException(status_code=409, detail="Username or email already exists")
+    except SQLAlchemyError:
+        await db.rollback()
+        raise
     await db.refresh(user)
     return user

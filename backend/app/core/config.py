@@ -1,13 +1,16 @@
-from pydantic_settings import BaseSettings
+from dotenv import load_dotenv
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+load_dotenv()
 
 
 class Settings(BaseSettings):
-    app_name: str = "Project Nox"
-    environment: str = "development"
-    debug: bool = True
+    DATABASE_URL: str
+    APP_NAME: str = "Project Nox"
+    ENVIRONMENT: str = "development"
+    DEBUG: bool = False
 
-    class Config:
-        env_file = ".env"
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
 
 settings = Settings()

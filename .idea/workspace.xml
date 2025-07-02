@@ -5,13 +5,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24c5a663-50fd-4df7-a24d-409d903c1e53" name="Changes" comment="Fixed test_api_auth_register. Tests pass. Committing green code.">
-      <change afterPath="$PROJECT_DIR$/backend/app/tests/unit/test_core_security.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/77a440af-424d-4ff9-a18f-b9c1072b50b6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/77a440af-424d-4ff9-a18f-b9c1072b50b6/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/core/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/eslint.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/postcss.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/vite.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Heading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Loader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/ThemeToggle.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/registration/RegistrationForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/styles/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/styles/App.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/styles/assets/react.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/styles/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/styles/main.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/styles/vite-env.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/tailwind.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/tsconfig.node.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/core/security.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/core/security.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/alembic.ini" beforeDir="false" afterPath="$PROJECT_DIR$/backend/alembic.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/alembic/env.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/alembic/versions/815dd23ede05_create_user_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/alembic/versions/d7c34e5f28e1_initial_schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/api/v1/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/api/v1/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/core/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/core/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/core/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/core/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/exceptions/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/exceptions/handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models/user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/services/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/services/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/tests/integration/test.db" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/tests/integration/test.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/tests/unit/test_auth_validators.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/tests/unit/test_auth_validators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/tests/integration/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/tests/integration/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/tests/integration/dev.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/tests/integration/test.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/tests/integration/test_api_auth_register.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/tests/integration/test_user_registration_flow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/tests/unit/dev.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/tests/unit/test_api_auth_register.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/tests/unit/test_register_endpoint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dev.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.idea/frontend.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pytest.ini" beforeDir="false" afterPath="$PROJECT_DIR$/pytest.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,22 +82,22 @@
     &quot;assignee&quot;: &quot;justin-cagle&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/justin-cagle/project-nox.git",
-    "accountId": "bc22a9c5-22b0-42e4-a935-f9e34dde321c"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/justin-cagle/project-nox.git&quot;,
+    &quot;accountId&quot;: &quot;bc22a9c5-22b0-42e4-a935-f9e34dde321c&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "justin-cagle",
-    "repository": "project-nox"
+    &quot;owner&quot;: &quot;justin-cagle&quot;,
+    &quot;repository&quot;: &quot;project-nox&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -81,22 +129,35 @@
     "Python tests.Python tests for test_core_security.test_needs_rehash_false_on_fresh_hash.executor": "Run",
     "Python tests.Python tests for test_core_security.test_needs_rehash_true_on_weak_hash.executor": "Run",
     "Python tests.Python tests for test_core_security.test_verification.executor": "Run",
+    "Python tests.Python tests for test_user_registration_flow.test_register_duplicate_user.executor": "Run",
     "Python tests.Python tests in test_api_auth_register.py.executor": "Run",
     "Python tests.Python tests in test_auth_validators.py.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "#3 on feature/NOX-195-auth-register-int…tests",
+    "git-widget-placeholder": "feature/frontend-user-registration-",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
+    "settings.editor.selected.configurable": "com.android.studio.ml.bot.mainConfigurable",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
-  <component name="RunManager" selected="Python tests.Python tests for test_core_security.test_needs_rehash_true_on_weak_hash">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jcagl\PycharmProjects\PythonProject\dev\project-nox" />
+      <recent name="C:\Users\jcagl\PycharmProjects\PythonProject\dev\project-nox\backend" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python tests.Python tests for test_user_registration_flow.test_register_duplicate_user">
     <configuration name="Python tests for test_core_security.test_check_password_invalid" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="project-nox" />
       <option name="ENV_FILES" value="" />
@@ -126,22 +187,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_core_security.test_check_password_invalid_hash_format&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_core_security.test_check_password_valid" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="project-nox" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend/app/tests/unit" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_core_security.test_check_password_valid&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -177,21 +222,37 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test_user_registration_flow.test_register_duplicate_user" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="project-nox" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend/app/tests/integration" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_user_registration_flow.test_register_duplicate_user&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_user_registration_flow.test_register_duplicate_user" />
         <item itemvalue="Python tests.Python tests for test_core_security.test_needs_rehash_true_on_weak_hash" />
         <item itemvalue="Python tests.Python tests for test_core_security.test_needs_rehash_false_on_fresh_hash" />
         <item itemvalue="Python tests.Python tests for test_core_security.test_check_password_invalid_hash_format" />
         <item itemvalue="Python tests.Python tests for test_core_security.test_check_password_invalid" />
-        <item itemvalue="Python tests.Python tests for test_core_security.test_check_password_valid" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PY-251.25410.159" />
-        <option value="bundled-python-sdk-e0ed3721d81e-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.159" />
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-PY-251.26094.141" />
+        <option value="bundled-python-sdk-9f8e2b94138c-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26094.141" />
       </set>
     </attachedChunks>
   </component>
@@ -204,7 +265,11 @@
       <updated>1748948582161</updated>
       <workItem from="1748948584325" duration="243000" />
       <workItem from="1748948840843" duration="17178000" />
-      <workItem from="1750146041825" duration="58550000" />
+      <workItem from="1750146041825" duration="58968000" />
+      <workItem from="1751191703758" duration="9171000" />
+      <workItem from="1751273880550" duration="6600000" />
+      <workItem from="1751346367540" duration="13148000" />
+      <workItem from="1751423938537" duration="11600000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed test_api_auth_register. Tests pass. Committing green code.">
       <option name="closed" value="true" />
@@ -227,7 +292,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="Fixed test_api_auth_register. Tests pass. Committing green code." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/project_nox$.coverage" NAME=" Coverage Results" MODIFIED="1750992261844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app/tests/unit" />
+    <SUITE FILE_PATH="coverage/project_nox$.coverage" NAME=" Coverage Results" MODIFIED="1751433500739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app/tests/integration" />
     <SUITE FILE_PATH="coverage/project_nox$main.coverage" NAME="main Coverage Results" MODIFIED="1747894438005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app" />
     <SUITE FILE_PATH="coverage/project_nox$815dd23ede05_create_user_table.coverage" NAME="815dd23ede05_create_user_table Coverage Results" MODIFIED="1747904040323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/alembic/versions" />
     <SUITE FILE_PATH="coverage/project_nox$auth_validators.coverage" NAME="auth_validators Coverage Results" MODIFIED="1748809544599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app/validators" />
