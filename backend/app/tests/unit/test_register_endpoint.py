@@ -192,6 +192,8 @@ def test_invalid_field_type(invalid_type):
 
 def test_non_json_body():
     response = client.post(
-        "/api/v1/auth/register", data="not json", headers={"Content-Type": "text/plain"}
+        "/api/v1/auth/register",
+        content="not json",
+        headers={"Content-Type": "text/plain"},
     )
     assert response.status_code == 400  # Unsupported Media Type

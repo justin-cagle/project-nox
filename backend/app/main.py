@@ -5,7 +5,7 @@ from app.api.v1 import base
 from app.core.config import settings
 from app.exceptions.handlers import http_exception_handler, validation_exception_handler
 
-app = FastAPI(title=settings.app_name)
+app = FastAPI(title=settings.APP_NAME)
 app.add_exception_handler(
     RequestValidationError, validation_exception_handler
 )  # type: ignore[arg-type]
