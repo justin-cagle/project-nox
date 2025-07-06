@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: nox_user
       POSTGRES_PASSWORD: nox_pass
-      POSTGRES_DB: nox_dev
+      POSTGRES_DB: nox_test
     ports:
       - "5432:5432"
     volumes:
