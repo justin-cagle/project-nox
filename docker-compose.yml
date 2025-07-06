@@ -13,5 +13,17 @@ services:
     volumes:
       - nox_pgdata:/var/lib/postgresql/data
 
+  backend:
+    build:
+      context: ./backend
+    container_name: nox-backend
+    env_file:
+      - ./backend/.env
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    depends_on:
+      - postgres
+
 volumes:
   nox_pgdata:
