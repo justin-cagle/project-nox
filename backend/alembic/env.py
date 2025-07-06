@@ -1,5 +1,8 @@
+import os
 from logging.config import fileConfig
 
+# Load .env for DB connection URL
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, pool
 
 from alembic import context
@@ -14,7 +17,16 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
+# Look one level above the alembic/ folder
+dotenv_path = os.path.join(os.path.dirname(__file__), "../.env")
+load_dotenv(dotenv_path=dotenv_path)
 
+# Override sqlalchemy.url with value from .env
+db_url = os.getenv("POSTGRES_URL")
+if db_url:
+    config.set_main_option("sqlalchemy.url", db_url)
+
+# Metadata for 'autogenerate' support
 target_metadata = Base.metadata
 
 
