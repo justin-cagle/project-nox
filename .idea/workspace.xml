@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="24c5a663-50fd-4df7-a24d-409d903c1e53" name="Changes" comment="Fixed test_api_auth_register. Tests pass. Committing green code.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/alembic.ini" beforeDir="false" afterPath="$PROJECT_DIR$/backend/alembic.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/alembic/env.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +218,7 @@
       <workItem from="1751273880550" duration="6600000" />
       <workItem from="1751346367540" duration="13148000" />
       <workItem from="1751423938537" duration="12057000" />
-      <workItem from="1751603888317" duration="15725000" />
+      <workItem from="1751603888317" duration="17082000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed test_api_auth_register. Tests pass. Committing green code.">
       <option name="closed" value="true" />
