@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24c5a663-50fd-4df7-a24d-409d903c1e53" name="Changes" comment="Fixed test_api_auth_register. Tests pass. Committing green code.">
+      <change afterPath="$PROJECT_DIR$/docker-compose.dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/Dockerfile.dev" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +219,7 @@
       <workItem from="1751273880550" duration="6600000" />
       <workItem from="1751346367540" duration="13148000" />
       <workItem from="1751423938537" duration="12057000" />
-      <workItem from="1751603888317" duration="20630000" />
+      <workItem from="1751603888317" duration="22171000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed test_api_auth_register. Tests pass. Committing green code.">
       <option name="closed" value="true" />
