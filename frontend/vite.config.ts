@@ -7,7 +7,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'http://host.docker.internal:8000', // or your Pi's IP if needed
+        target: 'http://192.168.0.149:8000', // or your Pi's IP if needed
         changeOrigin: true,
         secure: false,
       },
