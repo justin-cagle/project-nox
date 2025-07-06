@@ -4,35 +4,29 @@ import { Loader } from '../../components/Loader.tsx'
 export function RegistrationForm() {
   const [email, setEmail] = useState('')
   const [userName, setUsername] = useState('')
-  const [displayname, setDisplayname] = useState('')
+  const [displayName, setDisplayName] = useState('')
   const [password, setPassword] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState(false)
 
-  const inputClass =
-    'flex-1 rounded border border-gray-300 px-3 py-2 ' +
-    'bg-white text-black dark:bg-neutral-800 dark:text-white ' +
-    'focus:outline-none focus:ring-2 focus:ring-shadowmint'
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError(null)
+    setSuccess(false)
 
     try {
-      const response = await fetch(
-        'http://localhost:8000/api/v1/auth/register',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email,
-            username: userName,
-            display_name: displayname,
-            password,
-          }),
-        }
-      )
+      const response = await fetch('/api/v1/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          user_name: userName,
+          display_name: displayName,
+          password,
+        }),
+      })
 
       if (!response.ok) {
         const data = await response.json()
@@ -51,65 +45,88 @@ export function RegistrationForm() {
 
   return (
     <form
-      className="flex flex-col gap-6 w-full max-w-md mt-8"
       onSubmit={handleSubmit}
+      className="w-full max-w-xl bg-surface dark:bg-surface px-8 py-10 rounded-2xl shadow-md flex flex-col gap-6 border border-border dark:border-border"
     >
-      <div className="flex items-center gap-4">
-        <label htmlFor="email" className="w-28 shrink-0">
+      <h2 className="text-xl font-semibold text-text dark:text-text tracking-wide">
+        Create your account
+      </h2>
+
+      <div className="flex flex-col gap-2">
+        <label
+          htmlFor="email"
+          className="text-sm font-medium text-text-muted dark:text-text-muted"
+        >
           Email
         </label>
         <input
           id="email"
           type="email"
-          className={inputClass}
+          className="w-full rounded-lg px-4 py-2 bg-background-light dark:bg-neutral-800 text-text-dark dark:text-white border border-border focus:outline-none focus:ring-2 focus:ring-accent"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <div className="flex items-center gap-4">
-        <label htmlFor="userName" className="w-28 shrink-0">
+
+      <div className="flex flex-col gap-2">
+        <label
+          htmlFor="username"
+          className="text-sm font-medium text-text-muted dark:text-text-muted"
+        >
           Username
         </label>
         <input
-          id="userName"
+          id="username"
           type="text"
-          className={inputClass}
+          className="w-full rounded-lg px-4 py-2 bg-background-light dark:bg-neutral-800 text-text-dark dark:text-white border border-border focus:outline-none focus:ring-2 focus:ring-accent"
           value={userName}
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-      <div className="flex items-center gap-4">
-        <label htmlFor="displayname" className="w-28 shrink-0">
+
+      <div className="flex flex-col gap-2">
+        <label
+          htmlFor="displayName"
+          className="text-sm font-medium text-text-muted dark:text-text-muted"
+        >
           Display Name
         </label>
         <input
-          id="displayname"
+          id="displayName"
           type="text"
-          className={inputClass}
-          value={displayname}
-          onChange={(e) => setDisplayname(e.target.value)}
+          className="w-full rounded-lg px-4 py-2 bg-background-light dark:bg-neutral-800 text-text-dark dark:text-white border border-border focus:outline-none focus:ring-2 focus:ring-accent"
+          value={displayName}
+          onChange={(e) => setDisplayName(e.target.value)}
         />
       </div>
-      <div className="flex items-center gap-4">
-        <label htmlFor="password" className="w-28 shrink-0">
+
+      <div className="flex flex-col gap-2">
+        <label
+          htmlFor="password"
+          className="text-sm font-medium text-text-muted dark:text-text-muted"
+        >
           Password
         </label>
         <input
           id="password"
           type="password"
-          className={inputClass}
+          className="w-full rounded-lg px-4 py-2 bg-background-light dark:bg-neutral-800 text-text-dark dark:text-white border border-border focus:outline-none focus:ring-2 focus:ring-accent"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      {error && <p className="text-red-500">{error}</p>}
-      {success && <p className="text-green-500">Registration successful!</p>}
+
+      {error && <p className="text-sm text-red-500">{error}</p>}
+      {success && (
+        <p className="text-sm text-green-500">Registration successful!</p>
+      )}
+
       <button
         type="submit"
-        className="flex items-center justify-center w-full"
+        className="mt-2 w-full flex items-center justify-center bg-accent text-black font-medium py-2 px-4 rounded-xl hover:bg-accent-muted transition disabled:opacity-50"
         disabled={isSubmitting}
       >
-        {isSubmitting ? <Loader /> : 'Submit'}
+        {isSubmitting ? <Loader /> : 'Register'}
       </button>
     </form>
   )
