@@ -22,7 +22,7 @@ dotenv_path = os.path.join(os.path.dirname(__file__), "../.env")
 load_dotenv(dotenv_path=dotenv_path)
 
 # Override sqlalchemy.url with value from .env
-db_url = os.getenv("POSTGRES_URL")
+db_url = os.getenv("DATABASE_URL")
 if db_url:
     config.set_main_option("sqlalchemy.url", db_url)
 
