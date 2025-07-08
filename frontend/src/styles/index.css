@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-    height: 100%;
-    margin: 0;
-    @apply bg-white text-black dark:bg-neutral-900 dark:text-white;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  @apply bg-white text-black dark:bg-neutral-900 dark:text-white;
 }
