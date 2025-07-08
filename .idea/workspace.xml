@@ -5,9 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24c5a663-50fd-4df7-a24d-409d903c1e53" name="Changes" comment="Fixed test_api_auth_register. Tests pass. Committing green code.">
-      <change afterPath="$PROJECT_DIR$/docker-compose.dev.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/Dockerfile.dev" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project-nox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project-nox.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/api/v1/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/api/v1/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Heading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Heading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/registration/RegistrationForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/registration/RegistrationForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +59,9 @@
     &quot;repository&quot;: &quot;project-nox&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -54,59 +70,169 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python tests.Python tests for test_api_auth_register.test_api_auth_register.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_api_auth_register.test_empty_body.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests for test_api_auth_register.test_invalid_field_type.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_api_auth_register.test_invalid_password.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_api_auth_register.test_missing_field.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_api_auth_register.test_non_json_body.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_api_auth_register.test_register_duplicate_user.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_api_auth_register.test_register_invalid_email.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_api_auth_register.test_register_missing_all_fields.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_api_auth_register.test_register_missing_email.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_api_auth_register.test_register_missing_password.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_auth_validators.test_invalid_email.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_auth_validators.test_invalid_password.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_auth_validators.test_valid_email.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_auth_validators.test_valid_password.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_core_security.test_check_password_invalid.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_core_security.test_check_password_invalid_hash_format.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_core_security.test_check_password_valid.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_core_security.test_needs_rehash_false_on_fresh_hash.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_core_security.test_needs_rehash_true_on_weak_hash.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_core_security.test_verification.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_user_registration_flow.test_register_duplicate_user.executor&quot;: &quot;Debug&quot;,
-    &quot;Python tests.Python tests in test_api_auth_register.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_auth_validators.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.base.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/frontend-user-registration-&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.android.studio.ml.bot.mainConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests for test_api_auth_register.test_api_auth_register.executor": "Run",
+    "Python tests.Python tests for test_api_auth_register.test_empty_body.executor": "Debug",
+    "Python tests.Python tests for test_api_auth_register.test_invalid_field_type.executor": "Run",
+    "Python tests.Python tests for test_api_auth_register.test_invalid_password.executor": "Run",
+    "Python tests.Python tests for test_api_auth_register.test_missing_field.executor": "Run",
+    "Python tests.Python tests for test_api_auth_register.test_non_json_body.executor": "Run",
+    "Python tests.Python tests for test_api_auth_register.test_register_duplicate_user.executor": "Run",
+    "Python tests.Python tests for test_api_auth_register.test_register_invalid_email.executor": "Run",
+    "Python tests.Python tests for test_api_auth_register.test_register_missing_all_fields.executor": "Run",
+    "Python tests.Python tests for test_api_auth_register.test_register_missing_email.executor": "Run",
+    "Python tests.Python tests for test_api_auth_register.test_register_missing_password.executor": "Run",
+    "Python tests.Python tests for test_auth_validators.test_invalid_email.executor": "Run",
+    "Python tests.Python tests for test_auth_validators.test_invalid_password.executor": "Run",
+    "Python tests.Python tests for test_auth_validators.test_valid_email.executor": "Run",
+    "Python tests.Python tests for test_auth_validators.test_valid_password.executor": "Run",
+    "Python tests.Python tests for test_core_security.test_check_password_invalid.executor": "Run",
+    "Python tests.Python tests for test_core_security.test_check_password_invalid_hash_format.executor": "Run",
+    "Python tests.Python tests for test_core_security.test_check_password_valid.executor": "Run",
+    "Python tests.Python tests for test_core_security.test_needs_rehash_false_on_fresh_hash.executor": "Run",
+    "Python tests.Python tests for test_core_security.test_needs_rehash_true_on_weak_hash.executor": "Run",
+    "Python tests.Python tests for test_core_security.test_verification.executor": "Run",
+    "Python tests.Python tests for test_user_registration_flow.test_register_duplicate_user.executor": "Debug",
+    "Python tests.Python tests in test_api_auth_register.py.executor": "Run",
+    "Python tests.Python tests in test_auth_validators.py.executor": "Run",
+    "Python.FastAPI.executor": "Run",
+    "Python.base.executor": "Debug",
+    "Python.test_user_registration_flow.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "feature/frontend-user-registration-",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.Vite Dev.executor": "Run",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pDefault",
+    "settings.editor.selected.configurable": "com.android.studio.ml.bot.mainConfigurable",
+    "ts.external.directory.path": "/home/dev/project-nox/frontend/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
+  <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
+    <layout>
+      <window_info id="Bookmarks" side_tool="true" />
+      <window_info id="Merge Requests" />
+      <window_info id="Backup and Sync History" />
+      <window_info id="Commit_Guest" show_stripe_button="false" />
+      <window_info id="Pull Requests" />
+      <window_info id="Learn" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2904762" />
+      <window_info id="Commit" order="1" weight="0.23776042" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.23776042" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="TypeScript" />
+      <window_info anchor="bottom" id="Build" />
+      <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="File Transfer" />
+      <window_info anchor="bottom" id="HfCacheToolWindow" />
+      <window_info anchor="bottom" id="Find" />
+      <window_info anchor="bottom" id="Version Control" order="0" weight="0.3296439" />
+      <window_info anchor="bottom" id="Problems" order="1" />
+      <window_info anchor="bottom" id="Problems View" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="3" weight="0.33033788" />
+      <window_info anchor="bottom" id="Services" order="4" />
+      <window_info anchor="bottom" id="Python Packages" order="5" weight="0.3296439" />
+      <window_info anchor="bottom" id="Profiler" order="6" weight="0.3296439" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.33033788" />
+      <window_info anchor="right" id="Plots" />
+      <window_info anchor="right" id="Endpoints" />
+      <window_info anchor="right" id="Coverage" side_tool="true" />
+      <window_info anchor="right" id="Python Console" />
+      <window_info anchor="right" id="SciView" />
+      <window_info anchor="right" id="Jupyter Variables" side_tool="true" />
+      <window_info anchor="right" id="Notifications" order="0" weight="0.32984126" />
+      <window_info anchor="right" id="AIAssistant" order="1" weight="0.25" />
+      <window_info anchor="right" id="Database" order="2" weight="0.25" />
+      <window_info anchor="right" id="Gradle" order="3" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.25" />
+    </layout>
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jcagl\PycharmProjects\PythonProject\dev\project-nox" />
       <recent name="C:\Users\jcagl\PycharmProjects\PythonProject\dev\project-nox\backend" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_user_registration_flow.test_register_duplicate_user">
+  <component name="RunManager" selected="Compound.Run ALL">
+    <configuration name="Run ALL" type="CompoundRunConfigurationType">
+      <toRun name="Vite Dev" type="js.build_tools.npm" />
+      <toRun name="FastAPI" type="PythonConfigurationType" />
+      <method v="2" />
+    </configuration>
+    <configuration name="FastAPI" type="PythonConfigurationType" factoryName="Python" singleton="false">
+      <module name="project-nox" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.13" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="uvicorn" />
+      <option name="PARAMETERS" value="app.main:app --reload --host 0.0.0.0 --port 8000" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="true" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_user_registration_flow" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="project-nox" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend/app/tests/integration" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend/app/tests/integration/test_user_registration_flow.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Vite Dev" type="js.build_tools.npm" singleton="false">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests for test_core_security.test_check_password_invalid" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="project-nox" />
       <option name="ENV_FILES" value="" />
@@ -187,23 +313,17 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python tests.Python tests for test_user_registration_flow.test_register_duplicate_user" />
-        <item itemvalue="Python tests.Python tests for test_core_security.test_needs_rehash_true_on_weak_hash" />
-        <item itemvalue="Python tests.Python tests for test_core_security.test_needs_rehash_false_on_fresh_hash" />
-        <item itemvalue="Python tests.Python tests for test_core_security.test_check_password_invalid_hash_format" />
-        <item itemvalue="Python tests.Python tests for test_core_security.test_check_password_invalid" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-PY-251.26927.74" />
-        <option value="bundled-python-sdk-657d8234b839-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.74" />
-      </set>
-    </attachedChunks>
+    <list>
+      <item itemvalue="Compound.Run ALL" />
+      <item itemvalue="npm.Vite Dev" />
+      <item itemvalue="Python.test_user_registration_flow" />
+      <item itemvalue="Python.FastAPI" />
+      <item itemvalue="Python tests.Python tests for test_core_security.test_check_password_invalid" />
+      <item itemvalue="Python tests.Python tests for test_core_security.test_check_password_invalid_hash_format" />
+      <item itemvalue="Python tests.Python tests for test_core_security.test_needs_rehash_false_on_fresh_hash" />
+      <item itemvalue="Python tests.Python tests for test_core_security.test_needs_rehash_true_on_weak_hash" />
+      <item itemvalue="Python tests.Python tests for test_user_registration_flow.test_register_duplicate_user" />
+    </list>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -220,6 +340,14 @@
       <workItem from="1751346367540" duration="13148000" />
       <workItem from="1751423938537" duration="12057000" />
       <workItem from="1751603888317" duration="22171000" />
+      <workItem from="1751939062146" duration="4067000" />
+      <workItem from="1751954160518" duration="714000" />
+      <workItem from="1751954885183" duration="612000" />
+      <workItem from="1751955504349" duration="297000" />
+      <workItem from="1751955860991" duration="249000" />
+      <workItem from="1751956172912" duration="1387000" />
+      <workItem from="1751967430590" duration="936000" />
+      <workItem from="1751990278421" duration="9564000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed test_api_auth_register. Tests pass. Committing green code.">
       <option name="closed" value="true" />
@@ -252,11 +380,17 @@
     <MESSAGE value="Fixed test_api_auth_register. Tests pass. Committing green code." />
     <option name="LAST_COMMIT_MESSAGE" value="Fixed test_api_auth_register. Tests pass. Committing green code." />
   </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/project_nox$test_user_registration_flow.coverage" NAME="test_user_registration_flow Coverage Results" MODIFIED="1751960388331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app/tests/integration" />
+    <SUITE FILE_PATH="coverage/project_nox$815dd23ede05_create_user_table.coverage" NAME="815dd23ede05_create_user_table Coverage Results" MODIFIED="1747904040323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/alembic/versions" />
     <SUITE FILE_PATH="coverage/project_nox$.coverage" NAME=" Coverage Results" MODIFIED="1751775383239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app/tests/integration" />
     <SUITE FILE_PATH="coverage/project_nox$main.coverage" NAME="main Coverage Results" MODIFIED="1747894438005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app" />
     <SUITE FILE_PATH="coverage/project_nox$base.coverage" NAME="base Coverage Results" MODIFIED="1751775424636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app/api/v1" />
-    <SUITE FILE_PATH="coverage/project_nox$815dd23ede05_create_user_table.coverage" NAME="815dd23ede05_create_user_table Coverage Results" MODIFIED="1747904040323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/alembic/versions" />
     <SUITE FILE_PATH="coverage/project_nox$auth_validators.coverage" NAME="auth_validators Coverage Results" MODIFIED="1748809544599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app/validators" />
+    <SUITE FILE_PATH="coverage/project_nox$FastAPI.coverage" NAME="FastAPI Coverage Results" MODIFIED="1752005766763" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
   </component>
 </project>
