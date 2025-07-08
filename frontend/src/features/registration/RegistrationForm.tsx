@@ -6,9 +6,17 @@ export function RegistrationForm() {
   const [userName, setUsername] = useState('')
   const [displayName, setDisplayName] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [confirmTouched, setConfirmTouched] = useState(false)
+
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState(false)
+
+  const passwordsMatch = password === confirmPassword
+  const noneEmpty =
+    email && userName && displayName && password && confirmPassword
+  const canSubmit = noneEmpty && passwordsMatch
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -116,6 +124,28 @@ export function RegistrationForm() {
         />
       </div>
 
+      <div className="flex flex-col gap-2">
+        <label
+          htmlFor="confirmPassword"
+          className="text-sm font-medium text-text-muted dark:text-text-muted"
+        >
+          Confirm Password
+        </label>
+        <input
+          id="confirmPassword"
+          type="password"
+          className="w-full rounded-lg px-4 py-2 bg-background-light dark:bg-neutral-800 text-text-dark dark:text-white border border-border focus:outline-none focus:ring-2 focus:ring-accent"
+          value={confirmPassword}
+          onChange={(e) => {
+            setConfirmPassword(e.target.value)
+            if (!confirmTouched) setConfirmTouched(true)
+          }}
+        />
+        {confirmTouched && !passwordsMatch && (
+          <p className="text-sm text-red-500">Passwords don't match!</p>
+        )}
+      </div>
+
       {error && <p className="text-sm text-red-500">{error}</p>}
       {success && (
         <p className="text-sm text-green-500">Registration successful!</p>
@@ -124,7 +154,7 @@ export function RegistrationForm() {
       <button
         type="submit"
         className="mt-2 w-full flex items-center justify-center bg-accent text-black font-medium py-2 px-4 rounded-xl hover:bg-accent-muted transition disabled:opacity-50"
-        disabled={isSubmitting}
+        disabled={isSubmitting || !canSubmit}
       >
         {isSubmitting ? <Loader /> : 'Register'}
       </button>
