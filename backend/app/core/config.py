@@ -10,9 +10,14 @@ class Settings(BaseSettings):
     ENVIRONMENT: str = "development"
     DEBUG: bool = False
 
+    EMAIL_TOKEN_SECRET: str
+    EMAIL_TOKEN_EXPIRES_MINUTES: int = 15  # or defined by .env
+
     model_config = SettingsConfigDict(
         env_file=".env", env_file_encoding="utf-8", extra="ignore"
     )
 
 
 settings = Settings()
+
+# TODO: Audit ENTIRE project for secrets that need to move to the .env file!
