@@ -30,9 +30,9 @@ services:
     image: postgres:15
     restart: unless-stopped
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
+      POSTGRES_USER: nox_user
+      POSTGRES_PASSWORD: nox_pass
+      POSTGRES_DB: nox_test
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
