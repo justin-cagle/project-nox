@@ -5,22 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24c5a663-50fd-4df7-a24d-409d903c1e53" name="Changes" comment="Fixed test_api_auth_register. Tests pass. Committing green code.">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project-nox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project-nox.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/core/tokens/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/core/tokens/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/core/tokens/email.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/core/tokens/purposes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/api/v1/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/api/v1/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Heading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Heading.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/registration/RegistrationForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/registration/RegistrationForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/core/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/core/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/exceptions/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/exceptions/handlers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +27,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/registration-confirm-password" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -111,11 +108,12 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.Vite Dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "/home/dev/project-nox/frontend/node_modules/prettier",
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pDefault",
-    "settings.editor.selected.configurable": "com.android.studio.ml.bot.mainConfigurable",
+    "settings.editor.selected.configurable": "preferences.toDoOptions",
     "ts.external.directory.path": "/home/dev/project-nox/frontend/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   },
@@ -133,13 +131,12 @@
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
       <window_info id="Learn" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2904762" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33763838" />
       <window_info id="Commit" order="1" weight="0.23776042" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.23776042" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Build" />
-      <window_info anchor="bottom" id="TODO" />
       <window_info anchor="bottom" id="File Transfer" />
       <window_info anchor="bottom" id="HfCacheToolWindow" />
       <window_info anchor="bottom" id="Find" />
@@ -150,7 +147,8 @@
       <window_info anchor="bottom" id="Services" order="4" />
       <window_info anchor="bottom" id="Python Packages" order="5" weight="0.3296439" />
       <window_info anchor="bottom" id="Profiler" order="6" weight="0.3296439" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.33033788" />
+      <window_info anchor="bottom" id="Run" order="7" weight="0.33033788" />
+      <window_info active="true" anchor="bottom" id="TODO" order="8" visible="true" weight="0.33033788" />
       <window_info anchor="right" id="Plots" />
       <window_info anchor="right" id="Endpoints" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
@@ -347,7 +345,7 @@
       <workItem from="1751955860991" duration="249000" />
       <workItem from="1751956172912" duration="1387000" />
       <workItem from="1751967430590" duration="936000" />
-      <workItem from="1751990278421" duration="9564000" />
+      <workItem from="1751990278421" duration="24845000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed test_api_auth_register. Tests pass. Committing green code.">
       <option name="closed" value="true" />

@@ -18,6 +18,7 @@ async def register_user(user_in: UserCreate, db: AsyncSession = Depends(get_db))
         "emailVerificationRequired": True,
     }
 
+
 @router.get("/db-check")
 async def db_check(session: AsyncSession = Depends(get_db)):
     result = await session.execute(text("SELECT 1"))
