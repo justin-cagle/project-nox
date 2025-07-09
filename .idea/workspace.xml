@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24c5a663-50fd-4df7-a24d-409d903c1e53" name="Changes" comment="Fixed test_api_auth_register. Tests pass. Committing green code.">
-      <change afterPath="$PROJECT_DIR$/backend/app/core/tokens/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/core/tokens/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/core/tokens/email.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/core/tokens/purposes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/core/email_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/services/email/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/services/email/template.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/services/email/templates/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/services/email/templates/verification.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/services/email/templates/verification.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/services/email/verification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/tests/integration/email/test_email_client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/core/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/core/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/exceptions/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/exceptions/handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.dev.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/registration-confirm-password" />
+        <entry key="$PROJECT_DIR$" value="NOX-191-Implement-email-verification-token-generation" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -93,6 +98,7 @@
     "Python tests.Python tests for test_user_registration_flow.test_register_duplicate_user.executor": "Debug",
     "Python tests.Python tests in test_api_auth_register.py.executor": "Run",
     "Python tests.Python tests in test_auth_validators.py.executor": "Run",
+    "Python tests.pytest for app.tests.integration.email.test_email_client.test_send_email.executor": "Run",
     "Python.FastAPI.executor": "Run",
     "Python.base.executor": "Debug",
     "Python.test_user_registration_flow.executor": "Run",
@@ -131,7 +137,7 @@
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
       <window_info id="Learn" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33763838" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.082703486" />
       <window_info id="Commit" order="1" weight="0.23776042" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.23776042" />
       <window_info anchor="bottom" id="Database Changes" />
@@ -143,23 +149,24 @@
       <window_info anchor="bottom" id="Version Control" order="0" weight="0.3296439" />
       <window_info anchor="bottom" id="Problems" order="1" />
       <window_info anchor="bottom" id="Problems View" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="3" weight="0.33033788" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="3" visible="true" weight="0.3301006" />
       <window_info anchor="bottom" id="Services" order="4" />
       <window_info anchor="bottom" id="Python Packages" order="5" weight="0.3296439" />
       <window_info anchor="bottom" id="Profiler" order="6" weight="0.3296439" />
       <window_info anchor="bottom" id="Run" order="7" weight="0.33033788" />
-      <window_info active="true" anchor="bottom" id="TODO" order="8" visible="true" weight="0.33033788" />
+      <window_info anchor="bottom" id="TODO" order="8" weight="0.33033788" />
       <window_info anchor="right" id="Plots" />
       <window_info anchor="right" id="Endpoints" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
       <window_info anchor="right" id="Python Console" />
       <window_info anchor="right" id="SciView" />
       <window_info anchor="right" id="Jupyter Variables" side_tool="true" />
-      <window_info anchor="right" id="Notifications" order="0" weight="0.32984126" />
+      <window_info anchor="right" id="Notifications" order="0" weight="0.3300872" />
       <window_info anchor="right" id="AIAssistant" order="1" weight="0.25" />
       <window_info anchor="right" id="Database" order="2" weight="0.25" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.25" />
       <window_info anchor="right" id="Maven" order="4" weight="0.25" />
+      <window_info anchor="right" id="documentation.v2" order="5" side_tool="true" weight="0.3302583" />
     </layout>
   </component>
   <component name="RecentsManager">
@@ -168,7 +175,7 @@
       <recent name="C:\Users\jcagl\PycharmProjects\PythonProject\dev\project-nox\backend" />
     </key>
   </component>
-  <component name="RunManager" selected="Compound.Run ALL">
+  <component name="RunManager" selected="Python tests.pytest for app.tests.integration.email.test_email_client.test_send_email">
     <configuration name="Run ALL" type="CompoundRunConfigurationType">
       <toRun name="Vite Dev" type="js.build_tools.npm" />
       <toRun name="FastAPI" type="PythonConfigurationType" />
@@ -229,22 +236,6 @@
       </scripts>
       <node-interpreter value="project" />
       <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_core_security.test_check_password_invalid" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="project-nox" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend/app/tests/unit" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_core_security.test_check_password_invalid&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <configuration name="Python tests for test_core_security.test_check_password_invalid_hash_format" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
@@ -311,17 +302,40 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest for app.tests.integration.email.test_email_client.test_send_email" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="project-nox" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;app.tests.integration.email.test_email_client.test_send_email&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Compound.Run ALL" />
       <item itemvalue="npm.Vite Dev" />
       <item itemvalue="Python.test_user_registration_flow" />
       <item itemvalue="Python.FastAPI" />
-      <item itemvalue="Python tests.Python tests for test_core_security.test_check_password_invalid" />
+      <item itemvalue="Python tests.pytest for app.tests.integration.email.test_email_client.test_send_email" />
       <item itemvalue="Python tests.Python tests for test_core_security.test_check_password_invalid_hash_format" />
       <item itemvalue="Python tests.Python tests for test_core_security.test_needs_rehash_false_on_fresh_hash" />
       <item itemvalue="Python tests.Python tests for test_core_security.test_needs_rehash_true_on_weak_hash" />
       <item itemvalue="Python tests.Python tests for test_user_registration_flow.test_register_duplicate_user" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.pytest for app.tests.integration.email.test_email_client.test_send_email" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -345,7 +359,7 @@
       <workItem from="1751955860991" duration="249000" />
       <workItem from="1751956172912" duration="1387000" />
       <workItem from="1751967430590" duration="936000" />
-      <workItem from="1751990278421" duration="24845000" />
+      <workItem from="1751990278421" duration="43401000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed test_api_auth_register. Tests pass. Committing green code.">
       <option name="closed" value="true" />
@@ -385,6 +399,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/project_nox$test_user_registration_flow.coverage" NAME="test_user_registration_flow Coverage Results" MODIFIED="1751960388331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app/tests/integration" />
     <SUITE FILE_PATH="coverage/project_nox$815dd23ede05_create_user_table.coverage" NAME="815dd23ede05_create_user_table Coverage Results" MODIFIED="1747904040323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/alembic/versions" />
+    <SUITE FILE_PATH="coverage/project_nox$pytest_for_app_tests_integration_email_test_email_client_test_send_email.coverage" NAME="pytest for app.tests.integration.email.test_email_client.test_send_email Coverage Results" MODIFIED="1752040297027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project_nox$.coverage" NAME=" Coverage Results" MODIFIED="1751775383239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app/tests/integration" />
     <SUITE FILE_PATH="coverage/project_nox$main.coverage" NAME="main Coverage Results" MODIFIED="1747894438005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app" />
     <SUITE FILE_PATH="coverage/project_nox$base.coverage" NAME="base Coverage Results" MODIFIED="1751775424636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/app/api/v1" />
