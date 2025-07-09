@@ -62,3 +62,11 @@ def extract_error_info(exc: RequestValidationError) -> dict:
             "field": err.get("loc", ["unknown"])[-1],
         }
     return {"errorCode": "VALIDATION_ERROR", "field": None}
+
+
+class TokenValidationError(Exception):
+    def __init__(self, detail: str = "Invalid or expired token"):
+        self.detail = detail
+
+    def __str__(self):
+        return self.detail
