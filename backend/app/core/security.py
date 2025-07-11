@@ -1,3 +1,5 @@
+import hashlib
+
 from argon2 import PasswordHasher
 from argon2 import exceptions as argon2_exceptions
 
@@ -23,3 +25,14 @@ def check_password(password: str, hashed_password: str) -> bool:
 
 def needs_rehash(hashed: str) -> bool:
     return hasher.check_needs_rehash(hashed)
+
+
+def hash_str(string: str, purpose: str | None = None) -> str:
+    if purpose is not None:
+        input_str = f"{purpose}:{string}"
+    else:
+        input_str = string
+
+    encoded = hashlib.sha256(input_str.encode("utf-8"))
+
+    return encoded.hexdigest()
