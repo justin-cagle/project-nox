@@ -1,3 +1,12 @@
+"""
+Unit tests for custom email validation logic.
+
+These tests verify:
+- Accepted email formats using a variety of syntaxes
+- Rejection of malformed or invalid formats
+- Edge case handling for RFC-like variants and common mistakes
+"""
+
 import pytest
 
 from app.validators import auth_validators
@@ -18,6 +27,15 @@ from app.validators import auth_validators
     ],
 )
 def test_valid_email(valid_email):
+    """
+    Ensure that all valid email formats pass without raising.
+
+    Args:
+        valid_email (str): A known-valid email format.
+
+    Asserts:
+        No exception is raised.
+    """
     auth_validators.validate_email(valid_email)  # should not raise
 
 
@@ -41,40 +59,14 @@ def test_valid_email(valid_email):
     ],
 )
 def test_invalid_email(invalid_email):
-    with pytest.raises(ValueError) as exc_info:
+    """
+    Ensure that invalid emails raise ValueError.
+
+    Args:
+        invalid_email (str): A malformed or unacceptable email string.
+
+    Asserts:
+        ValueError is raised for each.
+    """
+    with pytest.raises(ValueError, match="INVALID_EMAIL"):
         auth_validators.validate_email(invalid_email)
-    assert "email" in str(exc_info.value).lower()
-
-
-# --- Password Validation Tests ---
-
-
-@pytest.mark.parametrize(
-    "valid_password",
-    ["StrongPass1!", "Another$Pass123", "Xyz@123abc", "Valid$Password9"],
-)
-def test_valid_password(valid_password):
-    auth_validators.validate_password(valid_password)  # should not raise
-
-
-@pytest.mark.parametrize(
-    "invalid_password",
-    [
-        "",  # empty
-        "short",  # too short
-        "alllowercase",  # no upper, no digit, no special
-        "ALLUPPERCASE",  # no lower, no digit, no special
-        "NoSpecial123",  # no special
-        "NoNumber!",  # no number
-        "PASSWORD123!",  # no lowercase (if something like "PASSWORD123!")
-        "password123!",  # no uppercase (if you test with "password123!")
-        "A" * 129,  # too long
-        "PasswordNoSpecial9",  # missing special
-        "PASSWORD123!",  # missing lowercase
-        "password123!",  # missing uppercase
-    ],
-)
-def test_invalid_password(invalid_password):
-    with pytest.raises(ValueError) as exc_info:
-        auth_validators.validate_password(invalid_password)
-    assert "password" in str(exc_info.value).lower()

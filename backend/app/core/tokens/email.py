@@ -1,3 +1,10 @@
+"""
+Email verification token generator.
+
+Creates purpose-bound, time-limited tokens tied to user identity,
+specifically for email verification workflows.
+"""
+
 from datetime import timedelta
 
 from purposes import TokenPurpose
@@ -8,6 +15,15 @@ from app.core.tokens.base import create_token
 
 
 def get_email_token(user_id: UUID) -> str:
+    """
+    Generate a short-lived token for verifying the user's email address.
+
+    Args:
+        user_id (UUID): Unique identifier for the target user.
+
+    Returns:
+        str: Signed and encoded verification token.
+    """
     return create_token(
         user_id,
         TokenPurpose.EMAIL_VERIFICATION,
