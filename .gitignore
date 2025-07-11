@@ -1,0 +1,5 @@
+
+# 🚫 Never again
+.idea/
+__pycache__/
+*.pyc
