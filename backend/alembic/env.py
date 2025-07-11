@@ -1,38 +1,53 @@
+"""
+Alembic migration environment setup.
+
+This script configures Alembic's context for running schema migrations,
+including database URL resolution from `.env`, metadata loading, and both
+offline/online migration modes.
+
+Key responsibilities:
+- Load SQLAlchemy `Base.metadata` for autogeneration
+- Load `.env` file to pull a database connection string
+- Support both offline (SQL output) and online (live DB) migration modes
+"""
+
 import os
 from logging.config import fileConfig
 
-# Load .env for DB connection URL
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, pool
 
 from alembic import context
-
-# Load SQLAlchemy metadata
 from app.core.base import Base
 
-# Alembic Config object
+# Alembic Config object (from alembic.ini)
 config = context.config
 
-# Setup loggers
+# Load logging config if present
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# Look one level above the alembic/ folder
+# Load .env one directory up (e.g., root/.env)
 dotenv_path = os.path.join(os.path.dirname(__file__), "../.env")
 load_dotenv(dotenv_path=dotenv_path)
 
-# Override sqlalchemy.url with value from .env
+# Read DB URL from environment (.env preferred over alembic.ini)
 db_url = os.getenv("ALEMBIC_DATABASE_URL")
 if db_url:
     config.set_main_option("sqlalchemy.url", db_url)
 
-# Metadata for 'autogenerate' support
+# This is what Alembic uses for `autogenerate` to detect model changes
 target_metadata = Base.metadata
 
 
 # --- OFFLINE mode ---
 def run_migrations_offline() -> None:
-    """Run migrations without a live DB connection (DDL only)."""
+    """
+    Run Alembic migrations in 'offline' mode.
+
+    Generates SQL script without connecting to a live database.
+    Useful for code review or auditing changes before applying.
+    """
     url = config.get_main_option("sqlalchemy.url")
     context.configure(
         url=url,
@@ -46,9 +61,14 @@ def run_migrations_offline() -> None:
         context.run_migrations()
 
 
-# --- ONLINE mode (sync engine only) ---
+# --- ONLINE mode ---
 def run_migrations_online() -> None:
-    """Run migrations with a sync engine to avoid async inspection bugs."""
+    """
+    Run Alembic migrations in 'online' mode using a sync SQLAlchemy engine.
+
+    Connects directly to the target database and applies migrations.
+    Sync engine avoids async reflection bugs with certain dialects.
+    """
     connectable = create_engine(
         config.get_main_option("sqlalchemy.url"),
         poolclass=pool.NullPool,
@@ -65,7 +85,7 @@ def run_migrations_online() -> None:
             context.run_migrations()
 
 
-# --- Entrypoint ---
+# Entrypoint: choose offline or online based on CLI context
 if context.is_offline_mode():
     run_migrations_offline()
 else:

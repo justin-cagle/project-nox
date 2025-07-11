@@ -26,3 +26,7 @@ async def send_verification_email(user: dict) -> None:
 
     mailer = get_email_client()
     await mailer.send_message(message)
+
+
+async def insert_token(token: str, db: AsyncSession) -> None:
+    pass
