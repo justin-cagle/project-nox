@@ -27,17 +27,13 @@ class UserCreate(BaseModel):
     display_name: str
 
     @field_validator("email")
+    @classmethod
     def validate_email_field(cls, v):
-        """
-        Validates that the email is in a proper format using a shared validator.
-        """
         validate_email(v)
         return v
 
     @field_validator("password")
+    @classmethod
     def validate_password_field(cls, v):
-        """
-        Validates that the password meets complexity and formatting rules.
-        """
         validate_password(v)
         return v

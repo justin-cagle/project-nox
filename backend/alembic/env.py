@@ -1,87 +1,47 @@
 """
 Alembic migration environment setup.
 
-This script configures Alembic's context for running schema migrations,
-including database URL resolution from `.env`, metadata loading, and both
-offline/online migration modes.
-
-Key responsibilities:
+Responsibilities:
 - Load SQLAlchemy `Base.metadata` for autogeneration
-- Load `.env` file to pull a database connection string
-- Support both offline (SQL output) and online (live DB) migration modes
+- Load `.env` for DB connection string (ALEMBIC_DATABASE_URL)
+- Support both offline and online migration modes
 """
 
 import os
 from logging.config import fileConfig
 
-<<<<<<< HEAD
-=======
-# Load .env for DB connection URL
->>>>>>> bb4ab5dba13a12d800dafbfc50e80697aa675c89
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, pool
 
 from alembic import context
-<<<<<<< HEAD
-from app.core.base import Base
+from app import models  # noqa F401 - Silence "import not used" complaint
+from app.core.base import Base  # Import your metadata here
 
 # Alembic Config object (from alembic.ini)
 config = context.config
 
-# Load logging config if present
-if config.config_file_name is not None:
+# Load logging config if available
+if config.config_file_name:
     fileConfig(config.config_file_name)
 
-# Load .env one directory up (e.g., root/.env)
+# Load .env file one level up (project root)
 dotenv_path = os.path.join(os.path.dirname(__file__), "../.env")
-load_dotenv(dotenv_path=dotenv_path)
+load_dotenv(dotenv_path)
 
-# Read DB URL from environment (.env preferred over alembic.ini)
-=======
-
-# Load SQLAlchemy metadata
-from app.core.base import Base
-
-# Alembic Config object
-config = context.config
-
-# Setup loggers
-if config.config_file_name is not None:
-    fileConfig(config.config_file_name)
-
-# Look one level above the alembic/ folder
-dotenv_path = os.path.join(os.path.dirname(__file__), "../.env")
-load_dotenv(dotenv_path=dotenv_path)
-
-# Override sqlalchemy.url with value from .env
->>>>>>> bb4ab5dba13a12d800dafbfc50e80697aa675c89
+# Load DB URL from environment
 db_url = os.getenv("ALEMBIC_DATABASE_URL")
-if db_url:
-    config.set_main_option("sqlalchemy.url", db_url)
+if not db_url:
+    raise RuntimeError("Missing ALEMBIC_DATABASE_URL in .env file.")
+config.set_main_option("sqlalchemy.url", db_url)
 
-<<<<<<< HEAD
-# This is what Alembic uses for `autogenerate` to detect model changes
-=======
 # Metadata for 'autogenerate' support
->>>>>>> bb4ab5dba13a12d800dafbfc50e80697aa675c89
 target_metadata = Base.metadata
 
 
-# --- OFFLINE mode ---
 def run_migrations_offline() -> None:
-<<<<<<< HEAD
-    """
-    Run Alembic migrations in 'offline' mode.
-
-    Generates SQL script without connecting to a live database.
-    Useful for code review or auditing changes before applying.
-    """
-=======
-    """Run migrations without a live DB connection (DDL only)."""
->>>>>>> bb4ab5dba13a12d800dafbfc50e80697aa675c89
-    url = config.get_main_option("sqlalchemy.url")
+    """Run Alembic migrations in 'offline' mode (SQL script output)."""
     context.configure(
-        url=url,
+        url=config.get_main_option("sqlalchemy.url"),
         target_metadata=target_metadata,
         literal_binds=True,
         compare_type=True,
@@ -92,20 +52,8 @@ def run_migrations_offline() -> None:
         context.run_migrations()
 
 
-<<<<<<< HEAD
-# --- ONLINE mode ---
 def run_migrations_online() -> None:
-    """
-    Run Alembic migrations in 'online' mode using a sync SQLAlchemy engine.
-
-    Connects directly to the target database and applies migrations.
-    Sync engine avoids async reflection bugs with certain dialects.
-    """
-=======
-# --- ONLINE mode (sync engine only) ---
-def run_migrations_online() -> None:
-    """Run migrations with a sync engine to avoid async inspection bugs."""
->>>>>>> bb4ab5dba13a12d800dafbfc50e80697aa675c89
+    """Run Alembic migrations in 'online' mode (direct DB connection)."""
     connectable = create_engine(
         config.get_main_option("sqlalchemy.url"),
         poolclass=pool.NullPool,
@@ -122,11 +70,7 @@ def run_migrations_online() -> None:
             context.run_migrations()
 
 
-<<<<<<< HEAD
-# Entrypoint: choose offline or online based on CLI context
-=======
-# --- Entrypoint ---
->>>>>>> bb4ab5dba13a12d800dafbfc50e80697aa675c89
+# Entrypoint: choose offline or online mode
 if context.is_offline_mode():
     run_migrations_offline()
 else:

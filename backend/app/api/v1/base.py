@@ -10,7 +10,6 @@ from http.client import HTTPException
 
 from fastapi import APIRouter, Depends
 from fastapi.responses import JSONResponse
-from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
@@ -20,7 +19,7 @@ from app.core.tokens.purposes import TokenPurpose
 from app.exceptions.handlers import TokenValidationError
 from app.schemas.auth import VerifyEmailToken
 from app.schemas.user import UserCreate
-from app.services.user import create_user
+from app.services.onboarding import onboard_user
 
 router = APIRouter()
 
@@ -38,10 +37,13 @@ async def register_user(user_in: UserCreate, db: AsyncSession = Depends(get_db))
         dict: A message confirming registration and whether email verification is required.
     """
     # Create the user in the database and trigger any related logic (e.g., sending verification).
-    user = await create_user(user_in, db)
+    try:
+        result = await onboard_user(user_in=user_in, db=db)
+    except HTTPException as e:
+        return {"error": "Registration Failed", "errorCode": 400, "detail": str(e)}
     return {
         "message": "Registration successful. Verification email sent.",
-        "userId": user.id,
+        "userId": result["user_id"],
         "emailVerificationRequired": True,
     }
 

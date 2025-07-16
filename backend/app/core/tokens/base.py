@@ -7,7 +7,6 @@ JWTs. It includes database-backed protection against token reuse via the
 """
 
 from datetime import datetime, timedelta, timezone
-from http.client import HTTPException
 
 from jose import JWTError, jwt
 from sqlalchemy import select
@@ -90,9 +89,10 @@ async def validate_token(
         raise TokenValidationError("Token could not be decoded")
 
     # Extract and normalize fields from the decoded payload.
-    user_id = payload.get("sub")
-    if user_id is None:
-        raise TokenValidationError("Token missing subject")
+    try:
+        user_id = UUID(payload.get("sub"))
+    except (TypeError, ValueError):
+        raise TokenValidationError("Token subject is invalid or missing")
 
     token_hash = hash_str(token)
 

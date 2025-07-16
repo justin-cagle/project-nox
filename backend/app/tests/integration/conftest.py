@@ -10,7 +10,7 @@ Each test runs in a clean schema for isolation.
 """
 
 import pytest
-from httpx import AsyncClient
+from httpx import ASGITransport, AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.pool import NullPool
 
@@ -69,11 +69,12 @@ async def client(db_session: AsyncSession):
     Allows full async HTTP testing with FastAPI endpoints and test DB.
     """
 
-    # Override FastAPI's get_db dependency with the test session
     async def override_get_db():
         yield db_session
 
     app.dependency_overrides[get_db] = override_get_db
 
-    async with AsyncClient(app=app, base_url="http://test") as c:
+    transport = ASGITransport(app=app)
+
+    async with AsyncClient(transport=transport, base_url="http://test") as c:
         yield c
