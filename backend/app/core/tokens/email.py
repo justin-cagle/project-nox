@@ -7,11 +7,11 @@ specifically for email verification workflows.
 
 from datetime import timedelta
 
-from purposes import TokenPurpose
 from sqlalchemy.dialects.postgresql.base import UUID
 
 from app.core.config import settings
 from app.core.tokens.base import create_token
+from app.core.tokens.purposes import TokenPurpose
 
 
 def get_email_token(user_id: UUID) -> str:

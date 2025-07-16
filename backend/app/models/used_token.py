@@ -9,7 +9,7 @@ Tracks the lifecycle and usage of hashed tokens, such as:
 
 import uuid
 
-from sqlalchemy import Column, DateTime, String
+from sqlalchemy import Column, DateTime, ForeignKey, String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql.functions import func
 
@@ -32,6 +32,8 @@ class UsedToken(Base):
     __tablename__ = "used_tokens"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
 
     # Hashed form of the token; never store raw token data
     token_hash = Column(String, nullable=False, index=True)

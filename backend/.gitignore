@@ -22,6 +22,7 @@ __pycache__/
 # Python (Backend)
 # ==========================
 /backend/.venv/
+/backend/.env_backups/
 /backend/.mypy_cache/
 /backend/.pytest_cache/
 /backend/*.sqlite3
