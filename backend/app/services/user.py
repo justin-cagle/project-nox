@@ -9,6 +9,7 @@ from fastapi import HTTPException
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.constants.messages import Registration
 from app.core.security import hash_password
 from app.models.user import User
 from app.schemas.user import UserCreate
@@ -43,10 +44,12 @@ async def create_user(user_in: UserCreate, db: AsyncSession) -> User:
         await db.commit()
     except IntegrityError:
         # Likely caused by a duplicate username or email.
+        print(">>> Caught IntegrityError")
         await db.rollback()
-        raise HTTPException(status_code=409, detail="Username or email already exists")
-    except SQLAlchemyError:
+        raise HTTPException(status_code=409, detail=Registration.DUPE_USER)
+    except SQLAlchemyError as e:
         # Roll back on any unexpected DB error.
+        print(">>> Caught SQLAlchemyError:", e)
         await db.rollback()
         raise
 

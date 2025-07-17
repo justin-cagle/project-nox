@@ -6,9 +6,7 @@ and email verification. It leverages FastAPI's dependency injection system and
 custom token validation logic.
 """
 
-from http.client import HTTPException
-
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import JSONResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -17,6 +15,7 @@ from app.core.db import get_db
 from app.core.tokens.base import validate_token
 from app.core.tokens.purposes import TokenPurpose
 from app.exceptions.handlers import TokenValidationError
+from app.main import limiter
 from app.schemas.auth import VerifyEmailToken
 from app.schemas.user import UserCreate
 from app.services.onboarding import onboard_user
@@ -25,6 +24,7 @@ router = APIRouter()
 
 
 @router.post("/auth/register")
+@limiter.limit("3/minute")
 async def register_user(user_in: UserCreate, db: AsyncSession = Depends(get_db)):
     """
     Registers a new user and sends a verification email.
@@ -40,7 +40,13 @@ async def register_user(user_in: UserCreate, db: AsyncSession = Depends(get_db))
     try:
         result = await onboard_user(user_in=user_in, db=db)
     except HTTPException as e:
-        return {"error": "Registration Failed", "errorCode": 400, "detail": str(e)}
+        raise e  # Let FastAPI handle it properly
+
+    if not result.get("success"):
+        raise HTTPException(
+            status_code=409, detail=result.get("detail", "Registration failed")
+        )
+
     return {
         "message": "Registration successful. Verification email sent.",
         "userId": result["user_id"],

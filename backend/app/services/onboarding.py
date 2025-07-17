@@ -18,7 +18,7 @@ async def onboard_user(user_in: UserCreate, db: AsyncSession) -> dict[str, str] 
     try:
         user = await create_user(user_in, db)
     except HTTPException as e:
-        return {"success": False, "message": Errors.GENERIC, "detail": str(e)}
+        raise e
 
     email_token = get_email_token(user_id=user.id)
 

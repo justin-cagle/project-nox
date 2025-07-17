@@ -18,6 +18,7 @@ from app.services.email.template import render_dual_template
 
 
 async def send_verification_email(user: User, token: str) -> None:
+    print("❌ REAL send_verification_email CALLED!")
     context = {
         "display_name": user.display_name,
         "email": user.email,

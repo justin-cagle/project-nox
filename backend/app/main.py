@@ -7,6 +7,9 @@ handlers, and registers the v1 API routes.
 
 from fastapi import FastAPI
 from fastapi.exceptions import HTTPException, RequestValidationError
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.util import get_remote_address
 
 from app.api.v1 import base
 from app.core.config import settings
@@ -16,6 +19,16 @@ from app.exceptions.handlers import http_exception_handler, validation_exception
 # `debug=True` enables detailed error pages during development.
 # Make sure this is disabled in production.
 app = FastAPI(title=settings.APP_NAME, debug=True)
+
+# 👇 Use in-memory for now
+limiter = Limiter(key_func=get_remote_address)
+
+# Create your FastAPI app
+app = FastAPI(...)
+
+# Register middleware
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 # Register custom exception handler for request validation errors.
 # type: ignore[arg-type] is used to silence type checker warnings related to handler signatures.

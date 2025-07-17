@@ -3,6 +3,7 @@ class Registration:
         "Registration successful! Check your inbox for an email validation message."
     )
     FAILURE = "Registration failed. Please try again."
+    DUPE_USER = "Username or email already exists"
 
 
 class Errors:

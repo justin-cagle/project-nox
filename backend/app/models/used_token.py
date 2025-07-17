@@ -9,11 +9,15 @@ Tracks the lifecycle and usage of hashed tokens, such as:
 
 import uuid
 
-from sqlalchemy import Column, DateTime, ForeignKey, String
+from sqlalchemy import Column, DateTime
+from sqlalchemy import Enum as PgEnum  # alias to avoid conflict with Python's Enum
+from sqlalchemy import ForeignKey, String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql.functions import func
 
 from app.core.base import Base
+from app.core.tokens.purposes import TokenPurpose
+from app.core.tokens.status import TokenStatus
 
 
 class UsedToken(Base):
@@ -39,13 +43,13 @@ class UsedToken(Base):
     token_hash = Column(String, nullable=False, index=True)
 
     # Optional purpose tag (e.g. "password_reset")
-    purpose = Column(String)
+    purpose = Column(PgEnum(TokenPurpose, name="tokenpurpose"), nullable=False)
 
     # Created automatically at insert
-    created_at = Column(DateTime, default=func.now())
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     # Set to non-null when the token is consumed
-    redeemed_at = Column(DateTime, nullable=True)
+    redeemed_at = Column(DateTime(timezone=True), nullable=True)
 
     # Status field for audit/debugging (e.g. used/revoked/expired)
-    status = Column(String)
+    status = Column(PgEnum(TokenStatus, name="tokenstatus"), nullable=False)
