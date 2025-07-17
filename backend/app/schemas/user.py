@@ -5,6 +5,8 @@ These schemas define the shape of user input and include field-level validators
 to enforce proper email and password formatting during registration.
 """
 
+import re
+
 from pydantic import BaseModel, field_validator
 
 from app.validators.auth_validators import validate_email, validate_password
@@ -37,3 +39,24 @@ class UserCreate(BaseModel):
     def validate_password_field(cls, v):
         validate_password(v)
         return v
+
+    @field_validator("user_name")
+    @classmethod
+    def not_blank(cls, v: str) -> str:
+        if not v.strip():
+            raise ValueError("USERNAME_BLANK")
+        return v
+
+    @field_validator("user_name")
+    @classmethod
+    def only_safe_chars(cls, v: str) -> str:
+        if not re.match(r"^[a-zA-Z0-9_.]+$", v):
+            raise ValueError("USERNAME_INVALID")
+        return v
+
+    @field_validator("user_name", mode="before")
+    @classmethod
+    def strip_input(cls, v) -> str:
+        if not isinstance(v, str):
+            raise ValueError("USERNAME_NOT_STRING")
+        return v.strip()

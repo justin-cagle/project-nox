@@ -21,6 +21,7 @@ from app.main import app
 client = TestClient(app)
 
 
+@patch("app.api.v1.base.onboard_user", new_callable=AsyncMock)
 @pytest.mark.parametrize(
     "valid_request",
     [
@@ -32,8 +33,7 @@ client = TestClient(app)
         }
     ],
 )
-@patch("app.api.v1.base.onboard_user", new_callable=AsyncMock)
-def test_create_valid_user(mock_create_user, valid_request):
+def test_create_valid_user(mock_onboard_user, valid_request):
     """
     Test a valid registration flow with mocked user creation.
 
@@ -43,11 +43,13 @@ def test_create_valid_user(mock_create_user, valid_request):
         - Correct user ID returned
         - Backend function is called exactly once
     """
-    mock_create_user.return_value = {
+    mock_onboard_user.return_value = {
         "success": True,
         "message": "Registration successful. Verification email sent.",
         "user_id": 123,
     }
+
+    print("✅ onboard_user mock called")
 
     response = client.post("/api/v1/auth/register", json=valid_request)
     assert response.status_code == 200
@@ -56,7 +58,7 @@ def test_create_valid_user(mock_create_user, valid_request):
     assert resp_body["userId"] == 123
     assert resp_body["emailVerificationRequired"] is True
 
-    mock_create_user.assert_called_once()
+    mock_onboard_user.assert_called_once()
 
 
 @pytest.mark.parametrize(
