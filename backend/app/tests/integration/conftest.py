@@ -9,6 +9,8 @@ This module sets up:
 Each test runs in a clean schema for isolation.
 """
 
+from unittest.mock import AsyncMock
+
 import pytest
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
@@ -17,6 +19,7 @@ from sqlalchemy.pool import NullPool
 from app.core.base import Base
 from app.core.config import settings
 from app.core.db import get_db
+from app.core.limiting import limiter
 from app.main import app
 
 # Use a separate test database by replacing "_dev" with "_test"
@@ -75,3 +78,15 @@ async def client(db_session: AsyncSession):
 
     async with AsyncClient(transport=transport, base_url="http://test") as c:
         yield c
+
+
+@pytest.fixture(autouse=True)
+def reset_rate_limit():
+    limiter.reset()
+
+
+@pytest.fixture(autouse=True)
+def disable_real_emails(monkeypatch):
+    mock = AsyncMock()
+    monkeypatch.setattr("app.services.onboarding.send_verification_email", mock)
+    return mock  # optional: if you want to assert on it later

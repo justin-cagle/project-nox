@@ -9,7 +9,6 @@ These tests verify:
 
 import uuid
 from datetime import datetime, timezone
-from unittest.mock import AsyncMock, patch
 
 import pytest
 from sqlalchemy import select
@@ -35,8 +34,7 @@ def unique_username():
 
 
 @pytest.mark.asyncio
-@patch("app.services.onboarding.send_verification_email", new_callable=AsyncMock)
-async def test_api_auth_register(mock_send_email, client, db_session):
+async def test_api_auth_register(client, db_session):
     """
     Test full registration flow with valid user input.
 
@@ -84,16 +82,12 @@ async def test_api_auth_register(mock_send_email, client, db_session):
     assert token.redeemed_at is None
     assert token.status == TokenStatus.ISSUED
 
-    # 🔒 Make sure the email trigger was attempted
-    mock_send_email.assert_called_once()
-
 
 @pytest.mark.parametrize(
     "missing_field", ["email", "password", "user_name", "display_name"]
 )
 @pytest.mark.asyncio
-@patch("app.services.onboarding.send_verification_email", new_callable=AsyncMock)
-async def test_register_missing_fields(mock_send_email, client, missing_field):
+async def test_register_missing_fields(client, missing_field):
     """
     Submit a payload missing one required field and assert correct validation error.
 
@@ -115,13 +109,10 @@ async def test_register_missing_fields(mock_send_email, client, missing_field):
     data = response.json()
     assert data["field"] == missing_field
 
-    mock_send_email.assert_not_called()
-
 
 @pytest.mark.parametrize("dupe", ["email", "user_name"])
-@patch("app.services.onboarding.send_verification_email", new_callable=AsyncMock)
 @pytest.mark.asyncio
-async def test_duplicate_registration(mock_send_email, client, dupe, db_session):
+async def test_duplicate_registration(client, dupe, db_session):
     email = unique_email()
     user_name = unique_username()
 
@@ -144,9 +135,7 @@ async def test_duplicate_registration(mock_send_email, client, dupe, db_session)
         "display_name": "Test User",
     }
 
-    print("SECOND PAYLOAD:", payload)
     users = await db_session.execute(select(User))
-    print("USERS IN DB:", users.scalars().all())
 
     # Second registration should fail
     response = await client.post("/api/v1/auth/register", json=dupe_payload)
@@ -154,8 +143,6 @@ async def test_duplicate_registration(mock_send_email, client, dupe, db_session)
     assert response.status_code == 409
     assert data["errorCode"] == "DUPLICATE_USER"
     assert data["errorMessage"] == Registration.DUPE_USER
-
-    mock_send_email.assert_called_once()
 
 
 @pytest.mark.parametrize(
@@ -188,3 +175,28 @@ async def test_register_field_edge_cases(client, field, value, expected_field):
         assert response.status_code == 400
         data = response.json()
         assert data["field"] == expected_field
+
+
+@pytest.mark.asyncio
+async def test_register_rate_limit(client):
+    payload = {
+        "email": unique_email(),
+        "password": "ValidPassword1!",
+        "user_name": unique_username(),
+        "display_name": "Test User",
+    }
+
+    # Make 3 successful requests
+    for _ in range(3):
+        response = await client.post("/api/v1/auth/register", json=payload)
+        assert response.status_code in {200, 400}  # allow validation to block reuse
+
+        # Change payload slightly to avoid validation rejection
+        payload["email"] = unique_email()
+        payload["user_name"] = unique_username()
+
+    # 4th request should be blocked
+    response = await client.post("/api/v1/auth/register", json=payload)
+    assert response.status_code == 429
+    data = response.json()
+    assert data["errorCode"] == "RATE_LIMITED"

@@ -14,6 +14,7 @@ for consistent frontend consumption.
 from fastapi import Request
 from fastapi.exceptions import HTTPException, RequestValidationError
 from fastapi.responses import JSONResponse
+from slowapi.errors import RateLimitExceeded
 from starlette.status import HTTP_400_BAD_REQUEST
 
 
@@ -132,3 +133,14 @@ class TokenValidationError(Exception):
 
     def __str__(self):
         return self.detail
+
+
+async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
+    return JSONResponse(
+        status_code=429,
+        content={
+            "error": "REGISTRATION_FAILED",
+            "errorCode": "RATE_LIMITED",
+            "errorMessage": "Too many requests. Please try again later.",
+        },
+    )
