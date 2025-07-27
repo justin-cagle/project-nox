@@ -9,6 +9,7 @@ This module sets up:
 Each test runs in a clean schema for isolation.
 """
 
+import uuid
 from unittest.mock import AsyncMock
 
 import pytest
@@ -28,6 +29,20 @@ TEST_DB_URL = str(settings.DATABASE_URL).replace("_dev", "_test")
 # Use NullPool to avoid connection reuse across tests
 engine_test = create_async_engine(TEST_DB_URL, poolclass=NullPool)
 AsyncSessionLocal = async_sessionmaker(bind=engine_test, expire_on_commit=False)
+
+
+def unique_email():
+    """
+    Generates a unique dummy email address for testing.
+    """
+    return f"{uuid.uuid4().hex[:8]}@example.com"
+
+
+def unique_username():
+    """
+    Generates a unique dummy username for testing.
+    """
+    return f"user_{uuid.uuid4().hex[:8]}"
 
 
 @pytest.fixture(scope="session")

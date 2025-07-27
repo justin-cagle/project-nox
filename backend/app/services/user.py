@@ -6,13 +6,15 @@ password hashing and database interactions with proper error handling.
 """
 
 from fastapi import HTTPException
+from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.constants.messages import Registration
+from app.constants.messages import Errors, Registration
 from app.core.security import hash_password
 from app.models.user import User
 from app.schemas.user import UserCreate
+from app.validators.auth_validators import validate_email
 
 
 async def create_user(user_in: UserCreate, db: AsyncSession) -> User:
@@ -32,8 +34,8 @@ async def create_user(user_in: UserCreate, db: AsyncSession) -> User:
     """
     # Construct the user ORM model instance with hashed password.
     user = User(
-        username=user_in.user_name,
-        email=user_in.email,
+        username=user_in.user_name.strip().lower(),
+        email=user_in.email.strip().lower(),
         display_name=user_in.display_name,
         hashed_password=hash_password(user_in.password),
     )
@@ -44,15 +46,32 @@ async def create_user(user_in: UserCreate, db: AsyncSession) -> User:
         await db.commit()
     except IntegrityError:
         # Likely caused by a duplicate username or email.
-        print(">>> Caught IntegrityError")
         await db.rollback()
         raise HTTPException(status_code=409, detail=Registration.DUPE_USER)
     except SQLAlchemyError as e:
         # Roll back on any unexpected DB error.
-        print(">>> Caught SQLAlchemyError:", e)
         await db.rollback()
         raise
 
     # Refresh to ensure the returned object has any DB-assigned fields populated (e.g., id).
     await db.refresh(user)
+    return user
+
+
+async def get_user_by_email(email: str, db: AsyncSession) -> User:
+    try:
+        validate_email(email)
+    except ValueError:
+        raise HTTPException(status_code=400, detail=Errors.GENERIC)
+
+    stmt = select(User).where(User.email == email.strip().lower())
+    result = await db.execute(stmt)
+    user = result.scalar_one_or_none()
+    return user
+
+
+async def get_user_by_username(username: str, db: AsyncSession) -> User:
+    stmt = select(User).where(User.username == username.strip().lower())
+    result = await db.execute(stmt)
+    user = result.scalar_one_or_none()
     return user
