@@ -7,30 +7,16 @@ These tests verify:
 - Server-side validation feedback consistency
 """
 
-import uuid
 from datetime import datetime, timezone
 
 import pytest
+from conftest import unique_email, unique_username
 from sqlalchemy import select
 
 from app.constants.messages import Registration
 from app.core.tokens.purposes import TokenPurpose
 from app.core.tokens.status import TokenStatus
 from app.models import UsedToken, User
-
-
-def unique_email():
-    """
-    Generates a unique dummy email address for testing.
-    """
-    return f"{uuid.uuid4().hex[:8]}@example.com"
-
-
-def unique_username():
-    """
-    Generates a unique dummy username for testing.
-    """
-    return f"user_{uuid.uuid4().hex[:8]}"
 
 
 @pytest.mark.asyncio

@@ -7,14 +7,19 @@ JWTs. It includes database-backed protection against token reuse via the
 """
 
 from datetime import datetime, timedelta, timezone
+from uuid import UUID
 
+from fastapi import HTTPException
 from jose import JWTError, jwt
 from sqlalchemy import select
-from sqlalchemy.dialects.postgresql.base import UUID
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.security import hash_str
+from app.core.tokens.purposes import TokenPurpose
+from app.core.tokens.status import TokenStatus
 from app.exceptions.handlers import TokenValidationError
+from app.models import User
 from app.models.used_token import UsedToken
 
 
@@ -62,6 +67,11 @@ def decode_token(token: str, expected_purpose: str, secret: str) -> dict:
     if dec.get("purpose") != expected_purpose:
         raise TokenValidationError(f"Unexpected token purpose: {dec.get('purpose')}")
 
+    unix_time = datetime.fromtimestamp(dec.get("exp"), tz=timezone.utc)
+
+    if unix_time <= datetime.now(tz=timezone.utc):
+        raise TokenValidationError("Token has expired")
+
     return dec
 
 
@@ -88,21 +98,68 @@ async def validate_token(
     except TokenValidationError:
         raise TokenValidationError("Token could not be decoded")
 
-    # Extract and normalize fields from the decoded payload.
     try:
-        user_id = UUID(payload.get("sub"))
+        raw_sub = payload.get("sub")
+        user_id = raw_sub if isinstance(raw_sub, UUID) else UUID(raw_sub)
     except (TypeError, ValueError):
         raise TokenValidationError("Token subject is invalid or missing")
 
-    token_hash = hash_str(token)
+    token_hash = hash_str(token, purpose)
 
-    # Check whether the token has already been used (replay protection).
     result = await db.execute(select(UsedToken).filter_by(token_hash=token_hash))
-    if result.scalar_one_or_none():
-        raise TokenValidationError("Token has already been used")
+    entry = result.scalar_one_or_none()
 
-    # Mark this token as used to prevent future replays.
-    db.add(UsedToken(token_hash=token_hash))
-    await db.commit()
+    if not entry:
+        raise TokenValidationError("Token not found or already used")
+    if (
+        entry.status != TokenStatus.ISSUED
+        or entry.purpose != TokenPurpose.EMAIL_VERIFICATION
+        or entry.redeemed_at is not None
+    ):
+        raise TokenValidationError("Token expired or invalid")
 
     return user_id
+
+
+async def modify_token_status(token: str, purpose: str, db: AsyncSession) -> None:
+    token_hash = hash_str(token, purpose)
+
+    try:
+        stmt = select(UsedToken).where(UsedToken.token_hash == token_hash)
+        result = await db.execute(stmt)
+        used_token = result.scalar_one_or_none()
+
+        if not used_token:
+            raise TokenValidationError("Token not found")
+
+        used_token.status = TokenStatus.REDEEMED
+        used_token.redeemed_at = datetime.now(tz=timezone.utc)
+
+        await db.commit()
+    except IntegrityError:
+        await db.rollback()
+        raise HTTPException(status_code=400, detail="Database integrity error")
+    except SQLAlchemyError:
+        await db.rollback()
+        raise HTTPException(status_code=500, detail="Unexpected database error")
+
+
+async def mark_user_verified(user_id: UUID, db: AsyncSession) -> None:
+    stmt = select(User).where(User.id == user_id)
+    result = await db.execute(stmt)
+    user = result.scalar_one_or_none()
+
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    user.is_verified = True
+    user.verified_at = datetime.now(tz=timezone.utc)  # Optional
+
+    try:
+        await db.commit()
+    except IntegrityError:
+        await db.rollback()
+        raise HTTPException(status_code=400, detail="Could not verify user")
+    except SQLAlchemyError:
+        await db.rollback()
+        raise HTTPException(status_code=500, detail="Database error")
