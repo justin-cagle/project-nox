@@ -11,6 +11,9 @@
 
 > Privately-developed full-stack platform leveraging AI mentorship for design and validation—no generated code.
 
+📄 See [DISCOURAGE_FORKING.md](./DISCOURAGE_FORKING.md) for details on usage restrictions.
+
+
 ---
 
 ### 🔍 What This Is
