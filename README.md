@@ -50,6 +50,14 @@ The purpose is to evaluate:
 
 ---
 
+### 📋 Project Management
+
+This project is planned and tracked using a private Jira board, and all technical documentation is maintained in a personal Confluence space.
+
+The full feature roadmap, task breakdown, workflows, and technical design documents follow a structured, professional-grade process—mirroring industry best practices.
+
+---
+
 ### 🛠️ Work In Progress
 
 This is an active, in-progress personal project.  
