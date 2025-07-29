@@ -33,7 +33,7 @@ async def test_email_validation(client, db_session, disable_real_emails: AsyncMo
         disable_real_emails=disable_real_emails,
     )
 
-    verification_url = f"/api/v1/auth/verify?token={token}"
+    verification_url = f"/api/v1/routers/auth/verify?token={token}"
     response = await client.get(verification_url)
 
     assert response.status_code == 200
@@ -60,7 +60,7 @@ async def test_email_validation_altered_token(
 
     bad_token = decode_and_modify_token_attribute(token, attribute)
 
-    verification_url = f"/api/v1/auth/verify?token={bad_token}"
+    verification_url = f"/api/v1/routers/auth/verify?token={bad_token}"
     response = await client.get(verification_url)
 
     assert response.status_code == 400
@@ -85,7 +85,7 @@ async def register_test_user(
         "display_name": "Test User",
     }
 
-    response = await client.post("/api/v1/auth/register", json=payload)
+    response = await client.post("/api/v1/routers/auth/register", json=payload)
     assert response.status_code == 200
     user_id = UUID(response.json()["userId"])
 
@@ -110,19 +110,19 @@ async def test_resend_verification_known_user(
         "user_name": username,
         "display_name": "Test User",
     }
-    response = await client.post("/api/v1/auth/register", json=payload)
+    response = await client.post("/api/v1/routers/auth/register", json=payload)
     assert response.status_code == 200
 
     # Try to resend using email
     resend_email = await client.post(
-        "/api/v1/auth/verify/resend", params={"email": email}
+        "/api/v1/routers/auth/verify/resend", params={"email": email}
     )
     assert resend_email.status_code == 200
     assert "verification email was sent" in resend_email.json()["message"]
 
     # Try to resend using username
     resend_username = await client.post(
-        "/api/v1/auth/verify/resend", params={"username": username}
+        "/api/v1/routers/auth/verify/resend", params={"username": username}
     )
     assert resend_username.status_code == 200
     assert "verification email was sent" in resend_username.json()["message"]
@@ -132,14 +132,14 @@ async def test_resend_verification_known_user(
 async def test_resend_verification_unknown_user(client: AsyncClient):
     # Try with non-existent email
     response = await client.post(
-        "/api/v1/auth/verify/resend", params={"email": "ghost@example.com"}
+        "/api/v1/routers/auth/verify/resend", params={"email": "ghost@example.com"}
     )
     assert response.status_code == 200
     assert "verification email was sent" in response.json()["message"]
 
     # Try with non-existent username
     response = await client.post(
-        "/api/v1/auth/verify/resend", params={"username": "notarealuser"}
+        "/api/v1/routers/auth/verify/resend", params={"username": "notarealuser"}
     )
     assert response.status_code == 200
     assert "verification email was sent" in response.json()["message"]

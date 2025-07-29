@@ -6,13 +6,15 @@ from app.main import app
 
 
 @pytest.mark.asyncio
+# NOTE: Running this test in isolation may fail due to logs/nox.log permissions.
+# Run with full test suite or ensure logs/ dir exists and is writable.
 async def test_app_startup_and_shutdown_logs(caplog):
     caplog.set_level("INFO")
 
     async with LifespanManager(app):
         transport = ASGITransport(app=app)
         async with AsyncClient(transport=transport, base_url="http://test") as client:
-            response = await client.get("/api/v1/health")
+            response = await client.get("/api/v1/routers/health")
             assert response.status_code == 200
             assert response.json() == {"message": "OK"}
 

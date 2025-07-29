@@ -29,3 +29,4 @@ class Auth:
     INVALID_CREDENTIALS = "Incorrect username or password."
     INACTIVE_ACCOUNT = "Your account is not active yet. Please verify your email."
     LOGIN_SUCCESS = "Welcome back!"
+    LOCKED = "Your account has been disabled."

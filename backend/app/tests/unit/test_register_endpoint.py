@@ -21,7 +21,7 @@ from app.main import app
 client = TestClient(app)
 
 
-@patch("app.api.v1.base.onboard_user", new_callable=AsyncMock)
+@patch("app.api.v1.routers.registration.onboard_user", new_callable=AsyncMock)
 @pytest.mark.parametrize(
     "valid_request",
     [
@@ -51,7 +51,7 @@ def test_create_valid_user(mock_onboard_user, valid_request):
 
     print("✅ onboard_user mock called")
 
-    response = client.post("/api/v1/auth/register", json=valid_request)
+    response = client.post("/api/v1/routers/auth/register", json=valid_request)
     assert response.status_code == 200
     resp_body = response.json()
     assert resp_body["message"] == "Registration successful. Verification email sent."
@@ -82,7 +82,7 @@ def test_invalid_email(invalid_email):
         - Email-specific error field and code
     """
     response = client.post(
-        "/api/v1/auth/register",
+        "/api/v1/routers/auth/register",
         json={
             "email": invalid_email,
             "password": "ValidPassword!",
@@ -125,7 +125,7 @@ def test_invalid_password(invalid_password):
         - Password-specific error field
     """
     response = client.post(
-        "/api/v1/auth/register",
+        "/api/v1/routers/auth/register",
         json={
             "email": "neo@example.com",
             "password": invalid_password,
@@ -179,7 +179,7 @@ def test_missing_field(missing_field):
         - 400 error
         - Generic safe error response with helpful message
     """
-    response = client.post("/api/v1/auth/register", json=missing_field)
+    response = client.post("/api/v1/routers/auth/register", json=missing_field)
     resp_body = response.json()
     assert response.status_code == 400
     assert resp_body["error"]
@@ -192,7 +192,7 @@ def test_empty_body():
     """
     Submit an empty JSON object and expect full validation failure.
     """
-    response = client.post("/api/v1/auth/register", json={})
+    response = client.post("/api/v1/routers/auth/register", json={})
     resp_body = response.json()
     assert response.status_code == 400
     assert resp_body["error"]
@@ -238,7 +238,7 @@ def test_invalid_field_type(invalid_type):
         - 400 validation error
         - Appropriate error message returned
     """
-    response = client.post("/api/v1/auth/register", json=invalid_type)
+    response = client.post("/api/v1/routers/auth/register", json=invalid_type)
     resp_body = response.json()
     assert response.status_code == 400
     assert resp_body["error"]
@@ -255,7 +255,7 @@ def test_non_json_body():
         - 400 error due to invalid media type
     """
     response = client.post(
-        "/api/v1/auth/register",
+        "/api/v1/routers/auth/register",
         content="not json",
         headers={"Content-Type": "text/plain"},
     )

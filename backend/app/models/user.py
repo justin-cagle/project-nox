@@ -33,3 +33,4 @@ class User(Base):
     display_name = Column(String)  # Non-unique, user-facing alias
     hashed_password = Column(String, nullable=False)  # Argon2id-hashed login secret
     is_verified = Column(Boolean, nullable=False, default=False)
+    is_locked = Column(Boolean, nullable=False, default=False)
