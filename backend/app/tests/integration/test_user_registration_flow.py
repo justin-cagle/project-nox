@@ -37,7 +37,7 @@ async def test_api_auth_register(client, db_session):
     }
 
     # Insert user in the DB
-    response = await client.post("/api/v1/auth/register", json=payload)
+    response = await client.post("/api/v1/routers/auth/register", json=payload)
     assert response.status_code == 200
     data = response.json()
     assert data["emailVerificationRequired"] is True
@@ -90,7 +90,7 @@ async def test_register_missing_fields(client, missing_field):
 
     del payload[missing_field]
 
-    response = await client.post("/api/v1/auth/register", json=payload)
+    response = await client.post("/api/v1/routers/auth/register", json=payload)
     assert response.status_code == 400
     data = response.json()
     assert data["field"] == missing_field
@@ -110,7 +110,7 @@ async def test_duplicate_registration(client, dupe, db_session):
     }
 
     # First registration should succeed
-    response = await client.post("/api/v1/auth/register", json=payload)
+    response = await client.post("/api/v1/routers/auth/register", json=payload)
     assert response.status_code == 200
     print("FIRST RESPONSE JSON:", response.json())
 
@@ -124,7 +124,7 @@ async def test_duplicate_registration(client, dupe, db_session):
     users = await db_session.execute(select(User))
 
     # Second registration should fail
-    response = await client.post("/api/v1/auth/register", json=dupe_payload)
+    response = await client.post("/api/v1/routers/auth/register", json=dupe_payload)
     data = response.json()
     assert response.status_code == 409
     assert data["errorCode"] == "DUPLICATE_USER"
@@ -152,7 +152,7 @@ async def test_register_field_edge_cases(client, field, value, expected_field):
     }
 
     payload[field] = value
-    response = await client.post("/api/v1/auth/register", json=payload)
+    response = await client.post("/api/v1/routers/auth/register", json=payload)
 
     # If expected_field is None, we expect success
     if expected_field is None:
@@ -174,7 +174,7 @@ async def test_register_rate_limit(client):
 
     # Make 3 successful requests
     for _ in range(3):
-        response = await client.post("/api/v1/auth/register", json=payload)
+        response = await client.post("/api/v1/routers/auth/register", json=payload)
         assert response.status_code in {200, 400}  # allow validation to block reuse
 
         # Change payload slightly to avoid validation rejection
@@ -182,7 +182,7 @@ async def test_register_rate_limit(client):
         payload["user_name"] = unique_username()
 
     # 4th request should be blocked
-    response = await client.post("/api/v1/auth/register", json=payload)
+    response = await client.post("/api/v1/routers/auth/register", json=payload)
     assert response.status_code == 429
     data = response.json()
     assert data["errorCode"] == "RATE_LIMITED"

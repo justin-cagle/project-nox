@@ -6,9 +6,10 @@ and token tracking (e.g. replay prevention).
 """
 
 from datetime import datetime
+from typing import Optional
 from uuid import UUID
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class UsedToken(BaseModel):
@@ -39,3 +40,15 @@ class VerifyEmailToken(BaseModel):
     """
 
     token: str
+
+
+class LoginRequest(BaseModel):
+    identifier: str
+    password: str
+    remember_me: bool = Field(default=False, alias="rememberMe")
+    otp: Optional[str] = None
+
+    model_config = {
+        "populate_by_name": True,  # allows backend to use snake_case while frontend sends camelCase
+        "extra": "forbid",  # optional: reject unknown fields
+    }

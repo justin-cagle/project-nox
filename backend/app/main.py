@@ -40,4 +40,4 @@ app.add_exception_handler(
 )  # type: ignore[arg-type]
 
 # Include API version 1 routes with a common prefix.
-app.include_router(base.router, prefix="/api/v1")
+app.include_router(base.api_router, prefix="/api/v1/routers")
