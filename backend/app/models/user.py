@@ -6,7 +6,7 @@ Defines a basic user entity with required identity and authentication fields.
 
 import uuid
 
-from sqlalchemy import Boolean, Column, String
+from sqlalchemy import Boolean, Column, Integer, String
 from sqlalchemy.dialects.postgresql import UUID
 
 from app.core.base import Base
@@ -34,3 +34,4 @@ class User(Base):
     hashed_password = Column(String, nullable=False)  # Argon2id-hashed login secret
     is_verified = Column(Boolean, nullable=False, default=False)
     is_locked = Column(Boolean, nullable=False, default=False)
+    token_version = Column(Integer, nullable=False, default=0)

@@ -24,7 +24,11 @@ from app.models.used_token import UsedToken
 
 
 def create_token(
-    user_id: UUID, purpose: str, expires_delta: timedelta, secret: str
+    user_id: UUID,
+    purpose: str,
+    expires_delta: timedelta,
+    secret: str,
+    version: int | None,
 ) -> str:
     """
     Creates a signed JWT for a given user and purpose.
@@ -34,14 +38,17 @@ def create_token(
         purpose (str): The intended use of the token (e.g., 'verify_email').
         expires_delta (timedelta): How long the token should be valid.
         secret (str): Secret used to sign the JWT.
+        version: Primarily used for refresh tokens, optional for others.
 
     Returns:
         str: The encoded JWT.
     """
     exp = datetime.now(tz=timezone.utc) + expires_delta
-    return jwt.encode(
-        {"sub": str(user_id), "exp": exp, "purpose": purpose}, secret, algorithm="HS256"
-    )
+    payload = {"sub": str(user_id), "exp": exp, "purpose": purpose}
+
+    if version is not None:
+        payload["ver"] = str(version)
+    return jwt.encode(claims=payload, key=secret, algorithm="HS256")
 
 
 def decode_token(token: str, expected_purpose: str, secret: str) -> dict:
