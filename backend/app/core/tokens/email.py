@@ -29,4 +29,5 @@ def get_email_token(user_id: UUID) -> str:
         TokenPurpose.EMAIL_VERIFICATION,
         timedelta(minutes=settings.EMAIL_TOKEN_EXPIRES_MINUTES),
         settings.EMAIL_TOKEN_SECRET,
+        version=None,
     )

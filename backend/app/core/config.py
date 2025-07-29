@@ -54,6 +54,11 @@ class Settings(BaseSettings):
     EMAIL_USE_SSL: bool
     CLIENT_ORIGIN: str
 
+    AUTH_SESSION_TOKEN_SECRET: str
+    AUTH_REFRESH_TOKEN_SECRET: str
+    AUTH_SESSION_DURATION: int
+    AUTH_REFRESH_DURATION: int
+
     # Meta config for pydantic_settings
     model_config = SettingsConfigDict(
         env_file=".env", env_file_encoding="utf-8", extra="ignore"
