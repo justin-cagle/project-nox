@@ -30,34 +30,36 @@ async def login_user(
             user = await get_user_by_username(identifier, db)
     except HTTPException:
         raise HTTPException(status_code=401, detail=Auth.INVALID_CREDENTIALS)
+    if user:
+        if user.is_locked:
+            raise HTTPException(status_code=403, detail=Auth.LOCKED)
 
-    if user.is_locked:
-        raise HTTPException(status_code=403, detail=Auth.LOCKED)
+        if not check_password(
+            password=credentials.password, hashed_password=user.hashed_password
+        ):
+            raise HTTPException(status_code=401, detail=Auth.INVALID_CREDENTIALS)
 
-    if not check_password(
-        password=credentials.password, hashed_password=user.hashed_password
-    ):
+        session_token = create_token(
+            user_id=user.id,
+            purpose=TokenPurpose.SESSION,
+            expires_delta=timedelta(minutes=settings.AUTH_SESSION_DURATION),
+            secret=settings.AUTH_SESSION_TOKEN_SECRET,
+            version=None,
+        )
+
+        response_body = {
+            "sessionToken": session_token,
+            "expiresIn": settings.AUTH_SESSION_DURATION,
+        }
+    else:
         raise HTTPException(status_code=401, detail=Auth.INVALID_CREDENTIALS)
-
-    session_token = create_token(
-        user_id=user.id,
-        purpose=TokenPurpose.SESSION,
-        expires_delta=timedelta(minutes=settings.AUTH_SESSION_DURATION),
-        secret=settings.AUTH_SESSION_SECRET,
-        version=None,
-    )
-
-    response_body = {
-        "sessionToken": session_token,
-        "expiresIn": settings.AUTH_SESSION_DURATION,
-    }
 
     if credentials.remember_me:
         refresh_token = create_token(
             user_id=user.id,
             purpose=TokenPurpose.REFRESH,
             expires_delta=timedelta(minutes=settings.AUTH_REFRESH_DURATION),
-            secret=settings.AUTH_REFRESH_SECRET,
+            secret=settings.AUTH_REFRESH_TOKEN_SECRET,
             version=None,
         )
         response_body["refreshToken"] = refresh_token
