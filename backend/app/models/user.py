@@ -35,3 +35,4 @@ class User(Base):
     is_verified = Column(Boolean, nullable=False, default=False)
     is_locked = Column(Boolean, nullable=False, default=False, server_default="false")
     token_version = Column(Integer, nullable=False, default=0, server_default="0")
+
