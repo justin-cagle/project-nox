@@ -1,6 +1,7 @@
 import { Heading } from '../components/Heading.tsx'
 import { ThemeToggle } from '../components/ThemeToggle'
-import { RegistrationForm } from '../features/registration/RegistrationForm.tsx'
+// import { RegistrationForm } from '../features/registration/RegistrationForm.tsx'
+import { UserLoginForm } from '../features/login/UserLoginForm.tsx'
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <main className="p-4 flex flex-col items-center justify-center space-y-4">
         <Heading>Welcome to Project Nox</Heading>
         <p>This is the future home of your platform.</p>
-        <RegistrationForm />
+        <UserLoginForm />
       </main>
     </div>
   )
