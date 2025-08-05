@@ -25,7 +25,7 @@ export function RegistrationForm() {
     setSuccess(false)
 
     try {
-      const response = await fetch('/api/v1/auth/routers/register', {
+      const response = await fetch('/api/v1/routers/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
